@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import FormDestination from "./FormDestination";
 import FormTravelPref from "./FormTravelPref";
+import Confirm from "./Confirm";
+import Success from "./Success";
 
 class CustomForm extends Component {
   state = {
@@ -59,9 +61,15 @@ class CustomForm extends Component {
           />
         );
       case 3:
-        return <h1>FormPersonal</h1>;
+        return (
+          <Confirm
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            values={values}
+          />
+        );
       case 4:
-        return <h1>Success</h1>;
+        return <Success />;
       default:
         return <h1>Default</h1>;
     }
