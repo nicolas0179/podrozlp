@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React with Boulé & Corp of company of the dead
         </a>
       </header>
     </div>
