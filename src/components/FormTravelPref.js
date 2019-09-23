@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import { useTheme, withStyles } from "@material-ui/core/styles";
+
 export class FormTravelPref extends Component {
   continue = e => {
     e.preventDefault();
@@ -21,6 +23,7 @@ export class FormTravelPref extends Component {
 
   render() {
     const { values, handleChange } = this.props;
+
     return (
       <MuiThemeProvider>
         <React.Fragment>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import AppBar from "@material-ui/core/AppBar";
-import { Toolbar, List, ListItem } from "@material-ui/core";
+import { Toolbar } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";

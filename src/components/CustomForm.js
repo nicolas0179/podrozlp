@@ -11,7 +11,8 @@ class CustomForm extends Component {
     firstName: "",
     lastName: "",
     age: "",
-    sex: ""
+    sex: "",
+    selectedOption: null
   };
 
   // Proceed to the next step
@@ -37,16 +38,22 @@ class CustomForm extends Component {
     });
   };
 
+  handleCountryChange = selectedOption => {
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
+  };
+
   render() {
     const { step } = this.state;
-    const { firstName, lastName, age, sex } = this.state;
-    const values = { firstName, lastName, age, sex };
+    const { firstName, lastName, age, sex, selectedOption } = this.state;
+    const values = { firstName, lastName, age, sex, selectedOption };
 
     switch (step) {
       case 1:
         return (
           <FormDestination
             nextStep={this.nextStep}
+            handleCountryChange={this.handleCountryChange}
             handleChange={this.handleChange}
             values={values}
           />
