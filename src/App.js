@@ -11,8 +11,8 @@ import CustomForm from "./components/CustomForm";
 
 const styles = {
   card: {
-    minWidth: 275,
-    maxWidth: 800
+    minWidth: 400,
+    maxWidth: 1200
   },
   bullet: {
     display: "inline-block",
@@ -33,7 +33,7 @@ function App(props) {
   return (
     <div className="App">
       <Grid container justify="center">
-        <Card className={classes.card}>
+        <Card style={{ overflow: "visible" }} className={classes.card}>
           <CardContent>
             <CustomForm />
           </CardContent>

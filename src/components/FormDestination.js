@@ -139,6 +139,21 @@ const options = [
   label: option.label
 }));
 
+const options2 = [
+  { label: "Nature" },
+  { label: "Plage" },
+  { label: "Shopping" },
+  { label: "Monuments historiques" },
+  { label: "Concerts" },
+  { label: "Festivals" },
+  { label: "Musées" },
+  { label: "Randonnées" },
+  { label: "Gastronomie" }
+].map(option => ({
+  value: option.label,
+  label: option.label
+}));
+
 function NoOptionsMessage(props) {
   return (
     <Typography
@@ -402,7 +417,12 @@ const components = {
 class FormDestination extends Component {
   render() {
     const { classes } = this.props;
-    const { values, handleChange, handleCountryChange } = this.props;
+    const {
+      values,
+      handleChange,
+      handleCountryChange,
+      handleThemeChange
+    } = this.props;
 
     // const [multi, setMulti] = React.useState(values.selectedOption);
 
@@ -474,6 +494,25 @@ class FormDestination extends Component {
               components={components}
               value={values.selectedOption}
               onChange={handleCountryChange}
+              isMulti
+            />
+            <br />
+            <Select
+              classes={classes}
+              styles={selectStyles}
+              inputId="react-select-multiple"
+              TextFieldProps={{
+                label: "Types d'activités",
+                InputLabelProps: {
+                  htmlFor: "react-select-multiple",
+                  shrink: true
+                }
+              }}
+              placeholder="Choisissez vos thématiques préférées"
+              options={options2}
+              components={components}
+              value={values.selectedOption2}
+              onChange={handleThemeChange}
               isMulti
             />
             <br />

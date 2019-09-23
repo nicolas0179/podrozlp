@@ -21,7 +21,7 @@ export class FormTravelPref extends Component {
 
   render() {
     const {
-      values: { firstName, lastName, selectedOption, age, sex }
+      values: { firstName, lastName, selectedOption, selectedOption2, age, sex }
     } = this.props;
     return (
       <MuiThemeProvider>
@@ -46,6 +46,15 @@ export class FormTravelPref extends Component {
               <ListItemText
                 primary="Country"
                 secondary={selectedOption.map(l => (
+                  <p>{l.value}</p>
+                ))}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemText
+                primary="Activités"
+                secondary={selectedOption2.map(l => (
                   <p>{l.value}</p>
                 ))}
               />
