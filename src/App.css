@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+@font-face {
+  font-family: "SignPainter";
+  src: url("../src/ressources/fonts/SignPainter HouseScript Regular.ttf") format("Truetype"),
+ }
+
+
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-image: url("../src/ressources/img/bg-home.jpg");
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,7 +18,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+h1{
+  margin:0;
+}
 .App-logo {
   height: 40vmin;
 }
@@ -17,3 +28,15 @@
 .App-link {
   color: #09d3ac;
 }
+
+.textTitle{
+  font-family: 'SignPainter';
+  font-size:120px;
+}
+
+.textSubTitle{
+  font-family: 'Lato', sans-serif;
+  font-weight: 1200;
+}
+
+

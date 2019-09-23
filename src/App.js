@@ -5,10 +5,12 @@ import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import Button from '@material-ui/core/Button';
 import CardContent from "@material-ui/core/CardContent";
 
 import CustomForm from "./components/CustomForm";
 
+import TitleImg from '../src/ressources/img/main-title.png';
 const styles = {
   card: {
     minWidth: 400,
@@ -32,13 +34,29 @@ function App(props) {
 
   return (
     <div className="App">
-      <Grid container justify="center">
-        <Card style={{ overflow: "visible" }} className={classes.card}>
-          <CardContent>
+    <Grid container justify="center">
+      <Grid item xs={12}>
+        {/* <img className="imgTitle" src={TitleImg} alt="Texte de Podroz"/> */}
+        <h1 className="textTitle" >PODROZ</h1>
+      </Grid>
+      <Grid item xs={12}>
+        <p className="textSubTitle, hit-the-floor" >LE VOYAGE TAILLÉ SUR MESURE</p>
+      </Grid>
+      <Grid item justify="center">
+        <Card style={{ overflow: "visible", borderRadius:'10px', width:'100vh' }} className={classes.card}>
+          <p style={{paddingLeft:'30px',paddingRight:'30px',paddingTop:'30px', fontSize:"20px"}}>PODROZ est la première plateforme vous proposant des séjours qui VOUS correspondent. 
+          Notre objectif étant de vous économisez des heures de recherches pour trouver la destination qui VOUS convient.</p>
+          <p style={{paddingLeft:'30px',paddingRight:'30px', fontSize:"20px"}}>Dites-nous qui vous êtes et nous vous dirons où aller :</p>
+          <Button variant="contained" color="primary" className={classes.button}>
+            Tentez l'aventure !
+          </Button>
+          <p style={{fontSize:"15px",textAlign:"right", verticalAlign:"bottom", paddingTop:'80px', paddingRight:"20px", paddingBottom:"10px"}}>Contact</p>
+          {/* <CardContent>
             <CustomForm />
-          </CardContent>
+          </CardContent> */}
         </Card>
       </Grid>
+    </Grid>
     </div>
   );
 }
