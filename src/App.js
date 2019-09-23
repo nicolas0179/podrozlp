@@ -34,23 +34,25 @@ function App(props) {
 
   return (
     <div className="App">
-    <Grid container justify="center">
+    <Grid container justify="center" style={{opacity:'0.92'}}> 
       <Grid item xs={12}>
         {/* <img className="imgTitle" src={TitleImg} alt="Texte de Podroz"/> */}
         <h1 className="textTitle" >PODROZ</h1>
       </Grid>
       <Grid item xs={12}>
-        <p className="textSubTitle, hit-the-floor" >LE VOYAGE TAILLÉ SUR MESURE</p>
+        <p className="textSubTitle, hit-the-floor" >VOS VACANCES TAILLÉS SUR MESURE</p>
       </Grid>
       <Grid item justify="center">
-        <Card style={{ overflow: "visible", borderRadius:'10px', width:'100vh' }} className={classes.card}>
-          <p style={{paddingLeft:'30px',paddingRight:'30px',paddingTop:'30px', fontSize:"20px"}}>PODROZ est la première plateforme vous proposant des séjours qui VOUS correspondent. 
-          Notre objectif étant de vous économisez des heures de recherches pour trouver la destination qui VOUS convient.</p>
+        <Card style={{ overflow: "visible", borderRadius:'10px', width:'90vh' }} className={classes.card}>
+          <p style={{paddingLeft:'30px',paddingRight:'30px',paddingTop:'30px', fontSize:"20px"}}>
+            PODROZ est la première plateforme gratuite vous proposant des séjours qui vous correspondent
+            <br></br>Du choix de la destination, jusqu'aux activités quotidiennes<br></br>Nous vous accompagnons pour tracer le séjour idéal ! 
+          </p>
           <p style={{paddingLeft:'30px',paddingRight:'30px', fontSize:"20px"}}>Dites-nous qui vous êtes et nous vous dirons où aller :</p>
           <Button variant="contained" color="primary" className={classes.button}>
             Tentez l'aventure !
           </Button>
-          <p style={{fontSize:"15px",textAlign:"right", verticalAlign:"bottom", paddingTop:'80px', paddingRight:"20px", paddingBottom:"10px"}}>Contact</p>
+          <p style={{fontSize:"15px",textAlign:"right", verticalAlign:"bottom", paddingTop:'40px', paddingRight:"20px", paddingBottom:"10px"}}> Mentions légales - Contact</p>
           {/* <CardContent>
             <CustomForm />
           </CardContent> */}
