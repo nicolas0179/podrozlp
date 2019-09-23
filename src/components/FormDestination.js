@@ -7,6 +7,7 @@ import { Toolbar } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import axios from "axios";
 
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -415,6 +416,22 @@ const components = {
 // const classes = useStyles();
 // const theme = useTheme();
 class FormDestination extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { countries: [] };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/pays")
+      .then(response => {
+        this.setState({ countries: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     const { classes } = this.props;
     const {
@@ -490,7 +507,10 @@ class FormDestination extends Component {
                 }
               }}
               placeholder="Select multiple countries"
-              options={options}
+              options={this.state.countries.map(currentCountry => ({
+                value: currentCountry.Pays,
+                label: currentCountry.Pays
+              }))}
               components={components}
               value={values.selectedOption}
               onChange={handleCountryChange}
