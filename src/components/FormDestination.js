@@ -3,7 +3,7 @@ import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import AppBar from "@material-ui/core/AppBar";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { Toolbar } from "@material-ui/core";
+import { Toolbar, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -26,6 +26,7 @@ import Select from "react-select";
 
 import { red } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
+import Icon from '@material-ui/core/Icon';
 
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -476,30 +477,18 @@ class FormDestination extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <React.Fragment>
-          <AppBar position="static">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+          {/* <AppBar position="static">
             <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="menu">
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6">Enter User Destination</Typography>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
           <form>
-            <TextField
-              id="firstName"
-              label="First Name"
-              onChange={handleChange("firstName")}
-              defaultValue={values.firstName}
-            />
-            <br />
-            <TextField
-              id="lastName"
-              label="Last Name"
-              onChange={handleChange("lastName")}
-              defaultValue={values.lastName}
-            />
-            <br />
-            <FormControl component="fieldset" className={classes.formControl}>
+            
+            {/* <FormControl component="fieldset" className={classes.formControl}>
               <FormLabel component="legend">Moyens de transport</FormLabel>
               <FormGroup>
                 <FormControlLabel
@@ -533,8 +522,7 @@ class FormDestination extends Component {
                   label="Voiture"
                 />
               </FormGroup>
-              {/* <FormHelperText>Be careful</FormHelperText> */}
-            </FormControl>
+            </FormControl> */}
 
             {/* <Select
             options={options}
@@ -542,18 +530,28 @@ class FormDestination extends Component {
             value={values.selectedOption}
           /> */}
             <br />
+            <Grid container justify="center" spacing={3} >
+              <Grid item xs={2}>
+                <Icon style={{color:'pink', fontSize:'75px', transform: 'rotate(45deg)'}}>airplanemode_active</Icon>
+              </Grid>
+              <Grid item xs={10}>
+                <h1 className="textTitleCard">Dites-nous en plus sur vos destinations favorites</h1>
+              </Grid>
+              
+            </Grid>
+            <br/>
             <Select
               classes={classes}
               styles={selectStyles}
               inputId="react-select-multiple"
               TextFieldProps={{
-                label: "Countries",
+                label: "Mes pays favoris",
                 InputLabelProps: {
                   htmlFor: "react-select-multiple",
                   shrink: true
                 }
               }}
-              placeholder="Select multiple countries"
+              placeholder="Sélectionnez vos pays favoris"
               options={this.state.countries.map(currentCountry => ({
                 value: currentCountry.Pays,
                 label: currentCountry.Pays
@@ -589,7 +587,7 @@ class FormDestination extends Component {
               style={styles.button}
               onClick={continu}
             >
-              Continue
+              Continuer
             </Button>
           </form>
         </React.Fragment>

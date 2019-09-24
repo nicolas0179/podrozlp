@@ -7,20 +7,60 @@ import { Toolbar } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import FormLabel from "@material-ui/core/FormLabel";
 import PropTypes from "prop-types";
-
+import Icon from '@material-ui/core/Icon';
 import { useTheme, withStyles } from "@material-ui/core/styles";
+
+const sex_options = [
+  {
+    value: 'femme',
+    label: 'Femme',
+  },
+  {
+    value: 'homme',
+    label: 'Homme',
+  },
+  {
+    value: 'autre',
+    label: 'Autre',
+  },
+
+];
 
 const styles = {
   formControl: {
-    margin: 24
+    // margin: 24
+  },
+  textField: {
+    marginLeft: 24,
+    marginRight: 24,
+    width: 150,
+  },
+  textFieldAge: {
+    marginLeft: 24,
+    marginRight: 24,
+    width: 100,
+  },
+  textFieldEmail: {
+    marginLeft: 24,
+    marginRight: 24,
+    // width: 250,
+  },
+  button:{
+    margin: 24 
   }
 };
 
@@ -41,74 +81,154 @@ export class FormTravelPref extends Component {
     const { values, handleChange } = this.props;
 
     return (
+      
       <MuiThemeProvider>
         <React.Fragment>
-          <AppBar position="static">
-            <Toolbar>
-              {/* <IconButton edge="start" color="inherit" aria-label="menu">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+          {/* <AppBar position="static">
+            <Toolbar style = {{backgroundColor:"white"}}>
+              <IconButton edge="start" color="inherit" aria-label="menu">
                 <MenuIcon />
-              </IconButton> */}
+              </IconButton>
+              
               <Typography variant="h6">Enter User Destination</Typography>
-            </Toolbar>
-          </AppBar>
+            </Toolbar>      
+          </AppBar> */}
+          <Grid container justify="center" spacing={3} >
+              <Grid item xs={2}>
+                <Icon style={{color:'pink', fontSize:'75px'}}>airplanemode_active</Icon>
+              </Grid>
+              <Grid item xs={10}>
+                <h1 className="textTitleCard">Dites-nous qui vous êtes</h1>
+              </Grid>
+              
+            </Grid>
           <form>
+          {/* <FormControl component="fieldset" className={classes.formControl}> */}
+
+          <Grid container spacing={1}>
+            <Grid item xs={6} >
+              <FormControl className={classes.formControl}>
+            <TextField
+                id="firstName"
+                label="Prénom"
+                onChange={handleChange("firstName")}
+                defaultValue={values.firstName}
+                className={classes.textField}
+                variant="outlined"
+              />    
+                          </FormControl>
+        
+              </Grid>
+            <Grid item xs={6} justify='flex-start' alignItems='flex-start' alignContent='flex-start'>
+            <FormControl className={classes.formControl}>
+
+            <TextField
+                id="lastName"
+                label="Nom"
+                onChange={handleChange("lastName")}
+                defaultValue={values.lastName}
+                className={classes.textField}
+                variant="outlined"
+              />     
+                          </FormControl>
+       
+              </Grid>
+            <Grid item xs={6}>
+            <FormControl className={classes.formControl}>
+
             <TextField
               id="age"
               label="Age"
               onChange={handleChange("age")}
               defaultValue={values.age}
+              type="number"
+              className={classes.textFieldAge}
+              variant="outlined"
+              
             />
-            <br />
-            <FormControl component="fieldset" className={classes.formControl}>
-              <FormLabel component="legend">Gender</FormLabel>
-              <RadioGroup
-                aria-label="gender"
-                name="gender1"
+                        </FormControl>
+
+            </Grid>
+            <Grid item xs={6}>
+            <FormControl className={classes.formControl}>
+
+            <TextField
+              id="sexe"
+              select
+              label="Sexe"
+              className={classes.textField}
+              value={values.sex}
+              onChange={handleChange('sex')}
+              variant="outlined"
+            >
+              {sex_options.map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+            </TextField>
+
+            {/* <InputLabel htmlFor="age-native-required">Sexe</InputLabel>
+              <Select
+                variant="outlined"
+                native
                 value={values.sex}
-                onChange={handleChange("sex")}
+                onChange={handleChange('sex')}
+                inputProps={{
+                  name: 'age',
+                  id: 'age-native-simple',
+                }}
               >
-                <FormControlLabel
-                  value="female"
-                  control={<Radio />}
-                  label="Female"
-                />
-                <FormControlLabel
-                  value="male"
-                  control={<Radio />}
-                  label="Male"
-                />
-                <FormControlLabel
-                  value="other"
-                  control={<Radio />}
-                  label="Other"
-                />
-              </RadioGroup>
-            </FormControl>
-            <br />
+                <option value=""/>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+                <option value="autre">Autre</option>
+              </Select> */}
+              </FormControl>
+
+            </Grid>
+            <Grid item xs={12}>
+            <FormControl className={classes.formControl}>
+
             <TextField
               id="email"
               label="Email"
               onChange={handleChange("email")}
               defaultValue={values.email}
               type="email"
+              className={classes.textFieldEmail}
+              variant="outlined"
+
             />
-            <br />
+                        </FormControl>
+
+            </Grid>
+            
+    
+          </Grid>
+
+
             <Button
               variant="contained"
               //color="primary"
               style={styles.button}
               onClick={this.back}
+              spacing={1}
             >
-              Back
+              Précédent
             </Button>
             <Button
               variant="contained"
               color="primary"
               style={styles.button}
               onClick={this.continue}
+              spacing={1}
+              type="submit"
             >
-              Continue
+              Soumettre
             </Button>
+
           </form>
         </React.Fragment>
       </MuiThemeProvider>
