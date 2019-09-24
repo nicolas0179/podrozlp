@@ -8,7 +8,21 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import PropTypes from "prop-types";
+
 import { useTheme, withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  formControl: {
+    margin: 24
+  }
+};
 
 export class FormTravelPref extends Component {
   continue = e => {
@@ -22,6 +36,8 @@ export class FormTravelPref extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     const { values, handleChange } = this.props;
 
     return (
@@ -43,11 +59,38 @@ export class FormTravelPref extends Component {
               defaultValue={values.age}
             />
             <br />
+            <FormControl component="fieldset" className={classes.formControl}>
+              <FormLabel component="legend">Gender</FormLabel>
+              <RadioGroup
+                aria-label="gender"
+                name="gender1"
+                value={values.sex}
+                onChange={handleChange("sex")}
+              >
+                <FormControlLabel
+                  value="female"
+                  control={<Radio />}
+                  label="Female"
+                />
+                <FormControlLabel
+                  value="male"
+                  control={<Radio />}
+                  label="Male"
+                />
+                <FormControlLabel
+                  value="other"
+                  control={<Radio />}
+                  label="Other"
+                />
+              </RadioGroup>
+            </FormControl>
+            <br />
             <TextField
-              id="sex"
-              label="Sexe"
-              onChange={handleChange("sex")}
-              defaultValue={values.sex}
+              id="email"
+              label="Email"
+              onChange={handleChange("email")}
+              defaultValue={values.email}
+              type="email"
             />
             <br />
             <Button
@@ -73,10 +116,10 @@ export class FormTravelPref extends Component {
   }
 }
 
-const styles = {
-  button: {
-    margin: 15
-  }
+FormTravelPref.propTypes = {
+  classes: PropTypes.object.isRequired
 };
 
-export default FormTravelPref;
+export default withStyles(styles)(FormTravelPref);
+
+//export default FormTravelPref;

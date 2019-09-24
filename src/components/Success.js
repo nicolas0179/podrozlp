@@ -9,7 +9,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 export class FormTravelPref extends Component {
   continue = e => {
     e.preventDefault();
-    // PROCESS FORM (Back-end) //
     this.props.nextStep();
   };
 

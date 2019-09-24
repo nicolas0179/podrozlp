@@ -4,16 +4,14 @@ import ssl
 from pprint import pprint
 import csv
 import requests 
+from config.keys import URL
 
 
 
-KEY = 'AIzaSyAA5fe3jh1XfM5iBsd_ELWVkQXHwlr8xC4'
-URL= "mongodb+srv://admin:admin@monpremiercluster-d66o9.gcp.mongodb.net/test?retryWrites=true&w=majority"
 client = pymongo.MongoClient(URL, ssl_cert_reqs=ssl.CERT_NONE)
 db = client['test']
 ##################### LISTE DES PAYS
 # pays= []
-# URL="mongodb+srv://admin:admin@monpremiercluster-d66o9.gcp.mongodb.net/test?retryWrites=true&w=majority&db?ssl=true"
 # client = pymongo.MongoClient(URL, ssl_cert_reqs=ssl.CERT_NONE)
 # db = client['test']
 # newcollec = db['pays']

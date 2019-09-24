@@ -13,7 +13,11 @@ class CustomForm extends Component {
     age: "",
     sex: "",
     selectedOption: null,
-    selectedOption2: null
+    selectedOption2: null,
+    avion: false,
+    train: false,
+    voiture: false,
+    velo: false
   };
 
   // Proceed to the next step
@@ -39,6 +43,10 @@ class CustomForm extends Component {
     });
   };
 
+  handleCheck = name => event => {
+    this.setState({ ...this.state, [name]: event.target.checked });
+  };
+
   handleCountryChange = selectedOption => {
     this.setState({ selectedOption });
     console.log(`Option selected:`, selectedOption);
@@ -52,20 +60,30 @@ class CustomForm extends Component {
   render() {
     const { step } = this.state;
     const {
+      email,
       firstName,
       lastName,
       age,
       sex,
       selectedOption,
-      selectedOption2
+      selectedOption2,
+      avion,
+      train,
+      voiture,
+      velo
     } = this.state;
     const values = {
+      email,
       firstName,
       lastName,
       age,
       sex,
       selectedOption,
-      selectedOption2
+      selectedOption2,
+      avion,
+      train,
+      voiture,
+      velo
     };
 
     switch (step) {
@@ -76,6 +94,7 @@ class CustomForm extends Component {
             handleCountryChange={this.handleCountryChange}
             handleThemeChange={this.handleThemeChange}
             handleChange={this.handleChange}
+            handleCheck={this.handleCheck}
             values={values}
           />
         );
