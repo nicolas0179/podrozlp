@@ -27,6 +27,13 @@ import Select from "react-select";
 import { red } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
 
+import FormLabel from "@material-ui/core/FormLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Checkbox from "@material-ui/core/Checkbox";
+
 // A custom theme for this app
 const theme = createMuiTheme({
   palette: {
@@ -96,6 +103,9 @@ const styles = theme => ({
   },
   divider: {
     height: theme.spacing(2)
+  },
+  formControl: {
+    margin: theme.spacing(3)
   }
 });
 // )
@@ -438,7 +448,8 @@ class FormDestination extends Component {
       values,
       handleChange,
       handleCountryChange,
-      handleThemeChange
+      handleThemeChange,
+      handleCheck
     } = this.props;
 
     // const [multi, setMulti] = React.useState(values.selectedOption);
@@ -488,6 +499,42 @@ class FormDestination extends Component {
               defaultValue={values.lastName}
             />
             <br />
+            <FormControl component="fieldset" className={classes.formControl}>
+              <FormLabel component="legend">Moyens de transport</FormLabel>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={values.avion}
+                      onChange={handleCheck("avion")}
+                      value="avion"
+                    />
+                  }
+                  label="Avion"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={values.train}
+                      onChange={handleCheck("train")}
+                      value="train"
+                    />
+                  }
+                  label="Train"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={values.voiture}
+                      onChange={handleCheck("voiture")}
+                      value="voiture"
+                    />
+                  }
+                  label="Voiture"
+                />
+              </FormGroup>
+              {/* <FormHelperText>Be careful</FormHelperText> */}
+            </FormControl>
 
             {/* <Select
             options={options}
