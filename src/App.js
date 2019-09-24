@@ -53,9 +53,9 @@ function App(props) {
             Tentez l'aventure !
           </Button>
           <p style={{fontSize:"15px",textAlign:"right", verticalAlign:"bottom", paddingTop:'40px', paddingRight:"20px", paddingBottom:"10px"}}> Mentions légales - Contact</p>
-          {/* <CardContent>
+          <CardContent>
             <CustomForm />
-          </CardContent> */}
+          </CardContent>
         </Card>
       </Grid>
     </Grid>
