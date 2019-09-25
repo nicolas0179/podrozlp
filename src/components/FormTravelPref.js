@@ -10,7 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import { makeStyles } from '@material-ui/core/styles';
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
@@ -23,6 +23,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import PropTypes from "prop-types";
 import Icon from "@material-ui/core/Icon";
 import { useTheme, withStyles } from "@material-ui/core/styles";
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const sex_options = [
   {
@@ -41,27 +42,30 @@ const sex_options = [
 
 const styles = {
   formControl: {
-    // margin: 24
+    margin: 8,
+    position:"relative"
   },
   textField: {
     marginLeft: 24,
     marginRight: 24,
-    width: 150
+    width: "17vw"
   },
   textFieldAge: {
     marginLeft: 24,
     marginRight: 24,
-    width: 150
+    width: "17vw"
   },
   textFieldEmail: {
     marginLeft: 24,
     marginRight: 24,
-    width: "auto"
+    width: '30vw',
+
   },
   button: {
     margin: 24
   }
 };
+
 
 export class FormTravelPref extends Component {
   continue = e => {
@@ -73,9 +77,17 @@ export class FormTravelPref extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
+  
+UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+        this.setState({
+          errors: nextProps.errors
+        });
+      }
+    }
 
   render() {
-    const { classes } = this.props;
+    const { classes, errors } = this.props;
 
     const { values, handleChange } = this.props;
 
@@ -95,16 +107,21 @@ export class FormTravelPref extends Component {
               <Typography variant="h6">Enter User Destination</Typography>
             </Toolbar>      
           </AppBar> */}
-          <Grid container justify="center" spacing={3}>
-            <Grid item xs={2}>
-              <Icon style={{ color: "pink", fontSize: "75px" }}>
-                airplanemode_active
-              </Icon>
+          <Grid spacing={1}container direction="row">
+              <Grid item xs={5} container justify="flex-end" alignItems="center">
+                <Icon
+                  style={{
+                    color: "pink",
+                    fontSize: "75px",
+                    transform: "rotate(-20deg)",
+                  }}
+                >face</Icon>
+              </Grid>
+              <Grid item xs={7} container justify="flex-start" alignItems="center" >
+                <h1 className="textTitleCard">Qui êtes vous ?</h1>
+              </Grid>
             </Grid>
-            <Grid item xs={10}>
-              <h1 className="textTitleCard">Dites-nous qui vous êtes</h1>
-            </Grid>
-          </Grid>
+          
           <form>
             {/* <FormControl component="fieldset" className={classes.formControl}> */}
 
@@ -188,16 +205,19 @@ export class FormTravelPref extends Component {
               </Select> */}
                 </FormControl>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} container justify="center" alignItems="center" >
                 <FormControl className={classes.formControl}>
                   <TextField
                     id="email"
                     label="Email"
-                    onChange={handleChange("email")}
+                    //onChange={handleChange("email")}
                     defaultValue={values.email}
                     type="email"
                     className={classes.textFieldEmail}
                     variant="outlined"
+                    InputProps={{
+                      startAdornment: <InputAdornment position="start">@</InputAdornment>,
+                    }}
                   />
                 </FormControl>
               </Grid>
