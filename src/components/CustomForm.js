@@ -4,10 +4,11 @@ import FormDestination from "./FormDestination";
 import FormTravelPref from "./FormTravelPref";
 import Confirm from "./Confirm";
 import Success from "./Success";
+import AccrocheText from "./AccrocheText";
 
 class CustomForm extends Component {
   state = {
-    step: 1,
+    step: 0,
     firstName: "",
     lastName: "",
     age: "",
@@ -87,10 +88,13 @@ class CustomForm extends Component {
     };
 
     switch (step) {
+      case 0:
+        return <AccrocheText nextStep={this.nextStep} />;
       case 1:
         return (
           <FormDestination
             nextStep={this.nextStep}
+            prevStep={this.prevStep}
             handleCountryChange={this.handleCountryChange}
             handleThemeChange={this.handleThemeChange}
             handleChange={this.handleChange}

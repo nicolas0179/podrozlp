@@ -26,7 +26,7 @@ import Select from "react-select";
 
 import { red } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
-import Icon from '@material-ui/core/Icon';
+import Icon from "@material-ui/core/Icon";
 
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -106,6 +106,9 @@ const styles = theme => ({
     height: theme.spacing(2)
   },
   formControl: {
+    margin: theme.spacing(3)
+  },
+  button: {
     margin: theme.spacing(3)
   }
 });
@@ -432,6 +435,10 @@ class FormDestination extends Component {
     this.state = { countries: [] };
   }
 
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  };
   componentDidMount() {
     axios
       .get("http://localhost:5000/pays")
@@ -477,7 +484,10 @@ class FormDestination extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <React.Fragment>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
           {/* <AppBar position="static">
             <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="menu">
@@ -487,7 +497,6 @@ class FormDestination extends Component {
             </Toolbar>
           </AppBar> */}
           <form>
-            
             {/* <FormControl component="fieldset" className={classes.formControl}>
               <FormLabel component="legend">Moyens de transport</FormLabel>
               <FormGroup>
@@ -530,16 +539,25 @@ class FormDestination extends Component {
             value={values.selectedOption}
           /> */}
             <br />
-            <Grid container justify="center" spacing={3} >
+            <Grid container justify="center" spacing={3}>
               <Grid item xs={2}>
-                <Icon style={{color:'pink', fontSize:'75px', transform: 'rotate(45deg)'}}>airplanemode_active</Icon>
+                <Icon
+                  style={{
+                    color: "pink",
+                    fontSize: "75px",
+                    transform: "rotate(45deg)"
+                  }}
+                >
+                  airplanemode_active
+                </Icon>
               </Grid>
               <Grid item xs={10}>
-                <h1 className="textTitleCard">Dites-nous en plus sur vos destinations favorites</h1>
+                <h1 className="textTitleCard">
+                  Dites-nous en plus sur vos destinations favorites
+                </h1>
               </Grid>
-              
             </Grid>
-            <br/>
+            <br />
             <Select
               classes={classes}
               styles={selectStyles}
@@ -581,6 +599,15 @@ class FormDestination extends Component {
               isMulti
             />
             <br />
+            <Button
+              variant="contained"
+              //color="primary"
+              style={styles.button}
+              onClick={this.back}
+              spacing={1}
+            >
+              Précédent
+            </Button>
             <Button
               variant="contained"
               color="primary"
