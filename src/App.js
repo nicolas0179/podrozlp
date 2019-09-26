@@ -70,7 +70,7 @@ function App(props) {
             // style={{ overflow: "visible", borderRadius: "10px", width: "60vw" }}
             className={classes.card}
           >
-            <CardContent>
+            <CardContent style={{position:'relative'}}>
               <CustomForm />
             </CardContent>
           </Card>

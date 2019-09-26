@@ -84,22 +84,20 @@ function AccrocheText(props) {
         color="primary"
         className={classes.margin}
         onClick={continu}
+        style={{marginBottom:'50px'}}
       >
         Tentez l'aventure
       </ColorButton>
-      <p
-        style={{
+      <div style={{position:'absolute', bottom:'0', right:'0', marginRight:'10px'}}>
+      <p style={{
+        
           fontSize: "15px",
-          textAlign: "right",
-          verticalAlign: "bottom",
-          paddingTop: "40px",
-          paddingRight: "20px",
-          paddingBottom: "10px"
-        }}
-      >
+          textAlign:'right'
+        }}>
         {" "}
         Mentions légales - Contact
       </p>
+    </div>
     </div>
   );
 }
