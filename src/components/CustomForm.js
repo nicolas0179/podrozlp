@@ -14,11 +14,7 @@ class CustomForm extends Component {
     age: "",
     sex: "",
     selectedOption: null,
-    selectedOption2: null,
-    avion: false,
-    train: false,
-    voiture: false,
-    velo: false
+    selectedOption2: null
   };
 
   // Proceed to the next step
@@ -67,11 +63,7 @@ class CustomForm extends Component {
       age,
       sex,
       selectedOption,
-      selectedOption2,
-      avion,
-      train,
-      voiture,
-      velo
+      selectedOption2
     } = this.state;
     const values = {
       email,
@@ -80,11 +72,7 @@ class CustomForm extends Component {
       age,
       sex,
       selectedOption,
-      selectedOption2,
-      avion,
-      train,
-      voiture,
-      velo
+      selectedOption2
     };
 
     switch (step) {

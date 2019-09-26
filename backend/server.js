@@ -25,6 +25,9 @@ connection.once("open", () => {
 const countriesRouter = require("./routes/pays");
 app.use("/pays", countriesRouter);
 
+const answersRouter = require("./routes/answers");
+app.use("/answers", answersRouter);
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
