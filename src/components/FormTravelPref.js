@@ -24,7 +24,29 @@ import PropTypes from "prop-types";
 import Icon from "@material-ui/core/Icon";
 import { useTheme, withStyles } from "@material-ui/core/styles";
 import InputAdornment from '@material-ui/core/InputAdornment';
-
+import { createMuiTheme } from "@material-ui/core/styles";
+import { red } from "@material-ui/core/colors";
+import {
+  emphasize,
+  // makeStyles,
+  // useTheme,
+} from "@material-ui/core/styles";
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#556cd6"
+    },
+    secondary: {
+      main: "#19857b"
+    },
+    error: {
+      main: red.A400
+    },
+    background: {
+      default: "#fff"
+    }
+  }
+});
 const sex_options = [
   {
     value: "femme",
@@ -41,10 +63,6 @@ const sex_options = [
 ];
 
 const styles = {
-  formControl: {
-    margin: 8,
-    position:"relative"
-  },
   textField: {
     marginLeft: 24,
     marginRight: 24,
@@ -61,8 +79,61 @@ const styles = {
     width: '30vw',
 
   },
+  root: {
+    flexGrow: 1,
+    height: 250,
+    minWidth: 290
+  },
+  input: {
+    display: "flex",
+    padding: 0,
+    height: "auto"
+  },
+  valueContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    flex: 1,
+    alignItems: "center",
+    overflow: "hidden"
+  },
+  chip: {
+    margin: theme.spacing(0.5, 0.25)
+  },
+  chipFocused: {
+    backgroundColor: emphasize(
+      theme.palette.type === "light"
+        ? theme.palette.grey[300]
+        : theme.palette.grey[700],
+      0.08
+    )
+  },
+  noOptionsMessage: {
+    padding: theme.spacing(1, 2)
+  },
+  singleValue: {
+    fontSize: 16
+  },
+  placeholder: {
+    position: "absolute",
+    left: 2,
+    bottom: 6,
+    fontSize: 16
+  },
+  paper: {
+    position: "absolute",
+    zIndex: 1,
+    marginTop: theme.spacing(1),
+    left: 0,
+    right: 0
+  },
+  divider: {
+    height: theme.spacing(2)
+  },
+  formControl: {
+    margin: theme.spacing(1)
+  },
   button: {
-    margin: 24
+    margin: theme.spacing(0)
   }
 };
 
@@ -222,26 +293,40 @@ UNSAFE_componentWillReceiveProps(nextProps) {
                 </FormControl>
               </Grid>
             </Grid>
-
-            <Button
-              variant="contained"
-              //color="primary"
-              style={styles.button}
-              onClick={this.back}
-              spacing={1}
-            >
-              Précédent
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              style={styles.button}
-              onClick={this.continue}
-              spacing={1}
-              type="submit"
-            >
-              Soumettre
-            </Button>
+            <br/>
+            <Grid container direction="row">
+              <Grid item xs={6} container justify="flex-start" alignItems="center">
+                <Button
+                  variant="contained"
+                  //color="primary"
+                  style={styles.button}
+                  onClick={this.back}
+                  spacing={1}
+                >
+                  <Icon
+                  style={{
+                    fontSize: "35px",
+                  }}
+                >navigate_before</Icon>
+                </Button>
+              </Grid>
+              <Grid item xs={6} container justify="flex-end" alignItems="center">
+                <Button
+                  variant="contained"
+                  style={styles.button}
+                  onClick={this.continue}
+                  spacing={1}
+                  type="submit"
+                >
+                  <Icon
+                  style={{
+                    fontSize: "35px",
+                  }}
+                >navigate_next</Icon>
+                </Button>
+              </Grid>
+            </Grid>
+            
           </form>
         </React.Fragment>
       </MuiThemeProvider>
