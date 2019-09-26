@@ -16,7 +16,8 @@ const ColorButton = withStyles(theme => ({
     "&:hover": {
       transform: "scale(1.05)",
       boxShadow: "0 6px 10px 4px rgba(255, 105, 135, .3)"
-    }
+    },
+  
     // color: 'rgba(255,255,255,1)',
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     // '&:hover': {
@@ -41,6 +42,9 @@ const styles = {
   },
   pos: {
     marginBottom: 12
+  },
+  margin: {
+    textAlign:'center',
   }
 };
 
@@ -52,7 +56,7 @@ function AccrocheText(props) {
   };
 
   return (
-    <div>
+    <div style={{textAlign:'center'}}>
       <p
         style={{
           paddingLeft: "30px",
@@ -63,8 +67,8 @@ function AccrocheText(props) {
       >
         PODROZ est la première plateforme gratuite vous proposant des séjours
         qui vous correspondent
-        <br></br>Du choix de la destination, jusqu'aux activités quotidiennes
-        <br></br>Nous vous accompagnons pour tracer le séjour idéal !
+        <br /><br />Du choix de la destination, jusqu'aux activités quotidiennes
+        Nous vous accompagnons pour tracer le séjour idéal !
       </p>
       <p
         style={{

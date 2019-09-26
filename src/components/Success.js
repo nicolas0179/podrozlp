@@ -21,14 +21,14 @@ export class FormTravelPref extends Component {
     return (
       <MuiThemeProvider>
         <React.Fragment>
-          <AppBar position="static">
+          {/* <AppBar position="static">
             <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="menu">
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6">Confirm User Data</Typography>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
           <h1>Suite</h1>
           <p>
             Vous allez recevoir prochainement un email pour obtenir des

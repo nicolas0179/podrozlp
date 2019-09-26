@@ -32,7 +32,10 @@ const ColorButton = withStyles(theme => ({
 const styles = {
   card: {
     minWidth: 400,
-    maxWidth: 1200
+    maxWidth: 1200,
+    overflow: "visible", 
+    borderRadius: "10px", 
+    width: "60vw"
   },
   bullet: {
     display: "inline-block",
@@ -55,16 +58,16 @@ function App(props) {
       <Grid container justify="center" style={{ opacity: "0.92" }}>
         <Grid item xs={12}>
           {/* <img className="imgTitle" src={TitleImg} alt="Texte de Podroz"/> */}
-          <h1 className="textTitle">PODROZ</h1>
+          <h1 className="textTitle" style={{textAlign:'center'}}>PODROZ</h1>
         </Grid>
         <Grid item xs={12}>
-          <p className="textSubTitle, hit-the-floor">
+          <p className="textSubTitle, hit-the-floor" style={{textAlign:'center'}}>
             VOS VACANCES TAILLÉES SUR MESURE
           </p>
         </Grid>
         <Grid item>
           <Card
-            style={{ overflow: "visible", borderRadius: "10px", width: "90vh" }}
+            // style={{ overflow: "visible", borderRadius: "10px", width: "60vw" }}
             className={classes.card}
           >
             <CardContent>

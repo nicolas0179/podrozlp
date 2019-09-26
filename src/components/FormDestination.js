@@ -496,6 +496,7 @@ class FormDestination extends Component {
               <Typography variant="h6">Enter User Destination</Typography>
             </Toolbar>
           </AppBar> */}
+          <div style={{textAlign:'center'}}>
           <form>
             {/* <FormControl component="fieldset" className={classes.formControl}>
               <FormLabel component="legend">Moyens de transport</FormLabel>
@@ -539,26 +540,27 @@ class FormDestination extends Component {
             value={values.selectedOption}
           /> */}
             <br />
-            <Grid container justify="center" spacing={3}>
-              <Grid item xs={2}>
+            <Grid spacing={1}container direction="row">
+              <Grid item xs={2} container justify="flex-end" alignItems="center">
                 <Icon
                   style={{
                     color: "pink",
                     fontSize: "75px",
-                    transform: "rotate(45deg)"
+                    transform: "rotate(45deg)",
                   }}
-                >
-                  airplanemode_active
-                </Icon>
+                >airplanemode_active</Icon>
               </Grid>
-              <Grid item xs={10}>
-                <h1 className="textTitleCard">
-                  Dites-nous en plus sur vos destinations favorites
-                </h1>
+              <Grid item xs={10} container justify="flex-start" alignItems="center" >
+                <h1 className="textTitleCard">Dites-nous en plus sur vos destinations favorites</h1>
               </Grid>
             </Grid>
             <br />
-            <Select
+            <Grid  spacing={1} container direction="row" justify="flex-end">
+              <Grid item xs={2} container justify="center" alignItems="flex-start">
+                LE TOP 1
+              </Grid>
+              <Grid item xs={4} justify="center" alignItems="center">
+              <Select
               classes={classes}
               styles={selectStyles}
               inputId="react-select-multiple"
@@ -569,7 +571,7 @@ class FormDestination extends Component {
                   shrink: true
                 }
               }}
-              placeholder="Sélectionnez vos pays favoris"
+              placeholder="PAYS"
               options={this.state.countries.map(currentCountry => ({
                 value: currentCountry.Pays,
                 label: currentCountry.Pays
@@ -577,10 +579,11 @@ class FormDestination extends Component {
               components={components}
               value={values.selectedOption}
               onChange={handleCountryChange}
-              isMulti
+
             />
-            <br />
-            <Select
+              </Grid>
+              <Grid item xs={6} justify="center" alignItems="center" >
+              <Select
               classes={classes}
               styles={selectStyles}
               inputId="react-select-multiple"
@@ -591,32 +594,147 @@ class FormDestination extends Component {
                   shrink: true
                 }
               }}
-              placeholder="Choisissez vos thématiques préférées"
+              placeholder="Activités"
               options={options2}
               components={components}
               value={values.selectedOption2}
               onChange={handleThemeChange}
               isMulti
             />
-            <br />
-            <Button
-              variant="contained"
-              //color="primary"
-              style={styles.button}
-              onClick={this.back}
-              spacing={1}
-            >
-              Précédent
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              style={styles.button}
-              onClick={continu}
-            >
-              Continuer
-            </Button>
+              </Grid>
+            </Grid>     
+            <br/>
+            <Grid  spacing={1} container direction="row" justify="flex-end">
+              <Grid item xs={2} container justify="center" alignItems="flex-start">
+                LE TOP 2
+              </Grid>
+              <Grid item xs={4} justify="center" alignItems="center">
+              <Select
+              classes={classes}
+              styles={selectStyles}
+              inputId="react-select-multiple"
+              TextFieldProps={{
+                label: "Mes pays favoris",
+                InputLabelProps: {
+                  htmlFor: "react-select-multiple",
+                  shrink: true
+                }
+              }}
+              placeholder="PAYS"
+              options={this.state.countries.map(currentCountry => ({
+                value: currentCountry.Pays,
+                label: currentCountry.Pays
+              }))}
+              components={components}
+              value={values.selectedOption}
+              onChange={handleCountryChange}
+
+            />
+              </Grid>
+              <Grid item xs={6} justify="center" alignItems="center" >
+              <Select
+              classes={classes}
+              styles={selectStyles}
+              inputId="react-select-multiple"
+              TextFieldProps={{
+                label: "Types d'activités",
+                InputLabelProps: {
+                  htmlFor: "react-select-multiple",
+                  shrink: true
+                }
+              }}
+              placeholder="Activités"
+              options={options2}
+              components={components}
+              value={values.selectedOption2}
+              onChange={handleThemeChange}
+              isMulti
+            />
+              </Grid>
+            </Grid>     
+            <br/>
+            <Grid  spacing={1} container direction="row" justify="flex-end">
+              <Grid item xs={2} container justify="center" alignItems="flex-start">
+                LE TOP 3
+              </Grid>
+              <Grid item xs={4} justify="center" alignItems="center">
+              <Select
+              classes={classes}
+              styles={selectStyles}
+              inputId="react-select-multiple"
+              TextFieldProps={{
+                label: "Mes pays favoris",
+                InputLabelProps: {
+                  htmlFor: "react-select-multiple",
+                  shrink: true
+                }
+              }}
+              placeholder="PAYS"
+              options={this.state.countries.map(currentCountry => ({
+                value: currentCountry.Pays,
+                label: currentCountry.Pays
+              }))}
+              components={components}
+              value={values.selectedOption}
+              onChange={handleCountryChange}
+
+            />
+              </Grid>
+              <Grid item xs={6} justify="center" alignItems="center" >
+              <Select
+              classes={classes}
+              styles={selectStyles}
+              inputId="react-select-multiple"
+              TextFieldProps={{
+                label: "Types d'activités",
+                InputLabelProps: {
+                  htmlFor: "react-select-multiple",
+                  shrink: true
+                }
+              }}
+              placeholder="Activités"
+              options={options2}
+              components={components}
+              value={values.selectedOption2}
+              onChange={handleThemeChange}
+              isMulti
+            />
+              </Grid>
+            </Grid>     
+            <br/>
+            <Grid container direction="row">
+              <Grid item xs={6} container justify="flex-start" alignItems="center">
+                <Button
+                  variant="contained"
+                  //color="primary"
+                  style={styles.button}
+                  onClick={this.back}
+                  spacing={1}
+                >
+                  <Icon
+                  style={{
+                    fontSize: "35px",
+                  }}
+                >navigate_before</Icon>
+                </Button>
+              </Grid>
+              <Grid item xs={6} container justify="flex-end" alignItems="center">
+                <Button
+                  variant="contained"
+                  color='rgb(0,0,0)'
+                  style={styles.button}
+                  onClick={continu}
+                >
+                  <Icon
+                  style={{
+                    fontSize: "35px",
+                  }}
+                >navigate_next</Icon>
+                </Button>
+              </Grid>
+            </Grid>
           </form>
+          </div>
         </React.Fragment>
       </MuiThemeProvider>
     );

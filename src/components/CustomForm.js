@@ -13,8 +13,10 @@ class CustomForm extends Component {
     lastName: "",
     age: "",
     sex: "",
+    email: "",
     selectedOption: null,
-    selectedOption2: null
+    selectedOption2: null,
+    errors: {}
   };
 
   // Proceed to the next step
@@ -55,7 +57,7 @@ class CustomForm extends Component {
   };
 
   render() {
-    const { step } = this.state;
+    const { step, errors } = this.state;
     const {
       email,
       firstName,
@@ -88,6 +90,7 @@ class CustomForm extends Component {
             handleChange={this.handleChange}
             handleCheck={this.handleCheck}
             values={values}
+            errors={errors}
           />
         );
       case 2:
@@ -97,6 +100,7 @@ class CustomForm extends Component {
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
+            errors={errors}
           />
         );
       case 3:
