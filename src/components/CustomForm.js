@@ -5,6 +5,9 @@ import FormTravelPref from "./FormTravelPref";
 import Confirm from "./Confirm";
 import Success from "./Success";
 import AccrocheText from "./AccrocheText";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:5000";
 
 class CustomForm extends Component {
   state = {
@@ -14,9 +17,11 @@ class CustomForm extends Component {
     age: "",
     sex: "",
     email: "",
-    selectedOption: null,
-    selectedOption2: null,
-    errors: {}
+    trip1: { country: null, activities: null },
+    trip2: { country: null, activities: null },
+    trip3: { country: null, activities: null },
+    errors: {},
+    errorText: ""
   };
 
   // Proceed to the next step
@@ -37,6 +42,20 @@ class CustomForm extends Component {
 
   // Handle fields change
   handleChange = input => e => {
+    if (input === "age") {
+      if (!isNaN(e.target.value)) {
+        this.setState({ [input]: e.target.value, errorText: "" });
+        console.log("ok it's number");
+        return;
+      } else {
+        e.target.value = "";
+        this.setState({
+          errorText: "Un âge c'est des chiffres :)"
+        });
+        console.log("notnumber");
+        return;
+      }
+    }
     this.setState({
       [input]: e.target.value
     });
@@ -46,14 +65,70 @@ class CustomForm extends Component {
     this.setState({ ...this.state, [name]: event.target.checked });
   };
 
-  handleCountryChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+  handleCountryChange = trip => e => {
+    let tripCopy = JSON.parse(JSON.stringify(this.state[trip]));
+    console.log(tripCopy);
+    console.log(`Event: `, e);
+    tripCopy.country = e.value;
+
+    this.setState({
+      [trip]: tripCopy
+    });
+    console.log("State : ", this.state);
+  };
+
+  handleTripChange = trip => e => {
+    let tripCopy = JSON.parse(JSON.stringify(this.state[trip]));
+    console.log(tripCopy);
+    console.log(`Event: `, e);
+    tripCopy.activities = [];
+
+    if (!(e == null)) {
+      for (var i = 0; i < e.length; i++) {
+        tripCopy.activities.push({
+          // activity: { value: e[i].value, label: e[i].label }
+          activity: e[i].value
+        });
+      }
+
+      // tripCopy.activities = e.map(x => x.value);
+    }
+    this.setState({
+      [trip]: tripCopy
+    });
+    // this.setState({ [trip]: e.target.value });
+    // console.log(`Trip:`, this.state.trip1);
   };
 
   handleThemeChange = selectedOption2 => {
     this.setState({ selectedOption2 });
     console.log(`Option selected:`, selectedOption2);
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.state);
+    const answer = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      age: Number(this.state.age),
+      sex: this.state.sex,
+      email: this.state.email,
+      trips: [this.state.trip1, this.state.trip2, this.state.trip3]
+      // trip1: this.state.trip1,
+      // trip2: this.state.trip2,
+      // trip3: this.state.trip3
+    };
+
+    console.log("answer : ", answer);
+    axios
+      .post("/answers/add", answer)
+      .then(res => console.log(res.data))
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    // window.location = "/";
   };
 
   render() {
@@ -64,17 +139,22 @@ class CustomForm extends Component {
       lastName,
       age,
       sex,
-      selectedOption,
-      selectedOption2
+      trip1,
+      trip2,
+      trip3,
+      errorText
     } = this.state;
+
     const values = {
       email,
       firstName,
       lastName,
       age,
       sex,
-      selectedOption,
-      selectedOption2
+      trip1,
+      trip2,
+      trip3,
+      errorText
     };
 
     switch (step) {
@@ -89,6 +169,8 @@ class CustomForm extends Component {
             handleThemeChange={this.handleThemeChange}
             handleChange={this.handleChange}
             handleCheck={this.handleCheck}
+            handleTripChange={this.handleTripChange}
+            handleSubmit={this.handleSubmit}
             values={values}
             errors={errors}
           />
@@ -99,6 +181,7 @@ class CustomForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
             values={values}
             errors={errors}
           />

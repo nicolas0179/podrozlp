@@ -3,7 +3,7 @@ const isEmpty = require("is-empty");
 
 module.exports = function validateAnswer(data) {
   let errors = {};
-
+  console.log("data : ", data);
   // Convert empty fields to an empty string so we can use validator functions
   data.firstName = !isEmpty(data.firstName) ? data.firstName : "";
   data.lastName = !isEmpty(data.lastName) ? data.lastName : "";
@@ -28,7 +28,7 @@ module.exports = function validateAnswer(data) {
   }
   // Sexe checks
   if (Validator.isEmpty(data.sex)) {
-    errors.sex = "Nom invalide";
+    errors.sex = "Sexe invalide";
   }
 
   return {

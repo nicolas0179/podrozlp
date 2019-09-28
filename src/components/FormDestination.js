@@ -457,9 +457,15 @@ class FormDestination extends Component {
       handleChange,
       handleCountryChange,
       handleThemeChange,
-      handleCheck
+      handleCheck,
+      handleTripChange,
+      handleSubmit
     } = this.props;
-
+    console.log("values = ", values);
+    console.log(values.trip1.country);
+    console.log(values.trip2.country);
+    console.log(values.trip3.country);
+    console.log(values.selectedOption);
     // const [multi, setMulti] = React.useState(values.selectedOption);
 
     // const handleChangeMulti = value => {
@@ -488,252 +494,307 @@ class FormDestination extends Component {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-          {/* <AppBar position="static">
-            <Toolbar>
-              <IconButton edge="start" color="inherit" aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6">Enter User Destination</Typography>
-            </Toolbar>
-          </AppBar> */}
-          <div style={{textAlign:'center'}}>
-          <form>
-            {/* <FormControl component="fieldset" className={classes.formControl}>
-              <FormLabel component="legend">Moyens de transport</FormLabel>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={values.avion}
-                      onChange={handleCheck("avion")}
-                      value="avion"
-                    />
-                  }
-                  label="Avion"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={values.train}
-                      onChange={handleCheck("train")}
-                      value="train"
-                    />
-                  }
-                  label="Train"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={values.voiture}
-                      onChange={handleCheck("voiture")}
-                      value="voiture"
-                    />
-                  }
-                  label="Voiture"
-                />
-              </FormGroup>
-            </FormControl> */}
-
-            {/* <Select
+          {console.log("=========>", "Values in JSX", values)}
+          <div style={{ textAlign: "center" }}>
+            <form>
+              {/* <Select
             options={options}
             onChange={handleCountryChange}
             value={values.selectedOption}
           /> */}
-            <br />
-            <Grid spacing={1}container direction="row">
-              <Grid item xs={2} container justify="flex-end" alignItems="center">
-                <Icon
-                  style={{
-                    color: "pink",
-                    fontSize: "75px",
-                    transform: "rotate(45deg)",
-                  }}
-                >airplanemode_active</Icon>
-              </Grid>
-              <Grid item xs={10} container justify="flex-start" alignItems="center" >
-                <h1 className="textTitleCard">Dites-nous en plus sur vos destinations favorites</h1>
-              </Grid>
-            </Grid>
-            <br />
-            <Grid  spacing={1} container direction="row" justify="flex-end">
-              <Grid item xs={2} container justify="center" alignItems="flex-start">
-                LE TOP 1
-              </Grid>
-              <Grid item xs={4} justify="center" alignItems="center">
-              <Select
-              classes={classes}
-              styles={selectStyles}
-              inputId="react-select-multiple"
-              TextFieldProps={{
-                label: "Mes pays favoris",
-                InputLabelProps: {
-                  htmlFor: "react-select-multiple",
-                  shrink: true
-                }
-              }}
-              placeholder="PAYS"
-              options={this.state.countries.map(currentCountry => ({
-                value: currentCountry.Pays,
-                label: currentCountry.Pays
-              }))}
-              components={components}
-              value={values.selectedOption}
-              onChange={handleCountryChange}
-
-            />
-              </Grid>
-              <Grid item xs={6} justify="center" alignItems="center" >
-              <Select
-              classes={classes}
-              styles={selectStyles}
-              inputId="react-select-multiple"
-              TextFieldProps={{
-                label: "Types d'activités",
-                InputLabelProps: {
-                  htmlFor: "react-select-multiple",
-                  shrink: true
-                }
-              }}
-              placeholder="Activités"
-              options={options2}
-              components={components}
-              value={values.selectedOption2}
-              onChange={handleThemeChange}
-              isMulti
-            />
-              </Grid>
-            </Grid>     
-            <br/>
-            <Grid  spacing={1} container direction="row" justify="flex-end">
-              <Grid item xs={2} container justify="center" alignItems="flex-start">
-                LE TOP 2
-              </Grid>
-              <Grid item xs={4} justify="center" alignItems="center">
-              <Select
-              classes={classes}
-              styles={selectStyles}
-              inputId="react-select-multiple"
-              TextFieldProps={{
-                label: "Mes pays favoris",
-                InputLabelProps: {
-                  htmlFor: "react-select-multiple",
-                  shrink: true
-                }
-              }}
-              placeholder="PAYS"
-              options={this.state.countries.map(currentCountry => ({
-                value: currentCountry.Pays,
-                label: currentCountry.Pays
-              }))}
-              components={components}
-              value={values.selectedOption}
-              onChange={handleCountryChange}
-
-            />
-              </Grid>
-              <Grid item xs={6} justify="center" alignItems="center" >
-              <Select
-              classes={classes}
-              styles={selectStyles}
-              inputId="react-select-multiple"
-              TextFieldProps={{
-                label: "Types d'activités",
-                InputLabelProps: {
-                  htmlFor: "react-select-multiple",
-                  shrink: true
-                }
-              }}
-              placeholder="Activités"
-              options={options2}
-              components={components}
-              value={values.selectedOption2}
-              onChange={handleThemeChange}
-              isMulti
-            />
-              </Grid>
-            </Grid>     
-            <br/>
-            <Grid  spacing={1} container direction="row" justify="flex-end">
-              <Grid item xs={2} container justify="center" alignItems="flex-start">
-                LE TOP 3
-              </Grid>
-              <Grid item xs={4} justify="center" alignItems="center">
-              <Select
-              classes={classes}
-              styles={selectStyles}
-              inputId="react-select-multiple"
-              TextFieldProps={{
-                label: "Mes pays favoris",
-                InputLabelProps: {
-                  htmlFor: "react-select-multiple",
-                  shrink: true
-                }
-              }}
-              placeholder="PAYS"
-              options={this.state.countries.map(currentCountry => ({
-                value: currentCountry.Pays,
-                label: currentCountry.Pays
-              }))}
-              components={components}
-              value={values.selectedOption}
-              onChange={handleCountryChange}
-
-            />
-              </Grid>
-              <Grid item xs={6} justify="center" alignItems="center" >
-              <Select
-              classes={classes}
-              styles={selectStyles}
-              inputId="react-select-multiple"
-              TextFieldProps={{
-                label: "Types d'activités",
-                InputLabelProps: {
-                  htmlFor: "react-select-multiple",
-                  shrink: true
-                }
-              }}
-              placeholder="Activités"
-              options={options2}
-              components={components}
-              value={values.selectedOption2}
-              onChange={handleThemeChange}
-              isMulti
-            />
-              </Grid>
-            </Grid>     
-            <br/>
-            <Grid container direction="row">
-              <Grid item xs={6} container justify="flex-start" alignItems="center">
-                <Button
-                  variant="contained"
-                  //color="primary"
-                  style={styles.button}
-                  onClick={this.back}
-                  spacing={1}
+              <br />
+              <Grid spacing={1} container direction="row">
+                <Grid
+                  item
+                  xs={2}
+                  container
+                  justify="flex-end"
+                  alignItems="center"
                 >
                   <Icon
-                  style={{
-                    fontSize: "35px",
-                  }}
-                >navigate_before</Icon>
-                </Button>
-              </Grid>
-              <Grid item xs={6} container justify="flex-end" alignItems="center">
-                <Button
-                  variant="contained"
-                  color='rgb(0,0,0)'
-                  style={styles.button}
-                  onClick={continu}
+                    style={{
+                      color: "pink",
+                      fontSize: "75px",
+                      transform: "rotate(45deg)"
+                    }}
+                  >
+                    airplanemode_active
+                  </Icon>
+                </Grid>
+                <Grid
+                  item
+                  xs={10}
+                  container
+                  justify="flex-start"
+                  alignItems="center"
                 >
-                  <Icon
-                  style={{
-                    fontSize: "35px",
-                  }}
-                >navigate_next</Icon>
-                </Button>
+                  <h1 className="textTitleCard">
+                    Dites-nous en plus sur vos destinations favorites
+                  </h1>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+              <p style={{ fontSize: "14px" }}>
+                Vous pouvez renseigner jusqu'à 3 destinations favorites, et pour
+                chacune d'entres elles, préciser quelles activités vous ont
+                motivées à partir{" "}
+              </p>
+              <Grid spacing={1} container direction="row" justify="flex-end">
+                <Grid
+                  item
+                  xs={2}
+                  container
+                  justify="center"
+                  alignItems="flex-start"
+                >
+                  #1
+                </Grid>
+                <Grid item xs={4} justify="center" alignItems="center">
+                  <Select
+                    classes={classes}
+                    styles={selectStyles}
+                    inputId="react-select-multiple"
+                    TextFieldProps={{
+                      label: "Mes pays favoris",
+                      InputLabelProps: {
+                        htmlFor: "react-select-multiple",
+                        shrink: true
+                      }
+                    }}
+                    placeholder="AAAAA"
+                    options={this.state.countries.map(currentCountry => ({
+                      value: currentCountry.Pays,
+                      label: currentCountry.Pays
+                    }))}
+                    components={components}
+                    value={
+                      values.trip1.country
+                        ? {
+                            label: values.trip1.country,
+                            value: values.trip1.country
+                          }
+                        : null
+                    }
+                    onChange={handleCountryChange("trip1")}
+                  />
+                  {console.log(
+                    "=========>",
+                    "values.trip1.country : ",
+                    values.trip1.country
+                  )}
+                </Grid>
+                <Grid item xs={6} justify="center" alignItems="center">
+                  <Select
+                    classes={classes}
+                    styles={selectStyles}
+                    inputId="react-select-multiple"
+                    TextFieldProps={{
+                      label: "Types d'activités",
+                      InputLabelProps: {
+                        htmlFor: "react-select-multiple",
+                        shrink: true
+                      }
+                    }}
+                    placeholder="Activités"
+                    options={options2}
+                    components={components}
+                    value={
+                      values.trip1.activities
+                        ? values.trip1.activities.map(x => ({
+                            value: x.activity,
+                            label: x.activity
+                          }))
+                        : null
+                    }
+                    onChange={handleTripChange("trip1")}
+                    isMulti
+                  />
+                </Grid>
+              </Grid>
+              <br />
+              <Grid spacing={1} container direction="row" justify="flex-end">
+                <Grid
+                  item
+                  xs={2}
+                  container
+                  justify="center"
+                  alignItems="flex-start"
+                >
+                  #2
+                </Grid>
+                <Grid item xs={4} justify="center" alignItems="center">
+                  <Select
+                    classes={classes}
+                    styles={selectStyles}
+                    inputId="react-select-multiple"
+                    TextFieldProps={{
+                      label: "Pays #2",
+                      InputLabelProps: {
+                        htmlFor: "react-select-multiple",
+                        shrink: true
+                      }
+                    }}
+                    placeholder="Italie, Thaïlande ..."
+                    options={this.state.countries.map(currentCountry => ({
+                      value: currentCountry.Pays,
+                      label: currentCountry.Pays
+                    }))}
+                    components={components}
+                    value={
+                      values.trip2.country
+                        ? {
+                            label: values.trip2.country,
+                            value: values.trip2.country
+                          }
+                        : null
+                    }
+                    onChange={handleCountryChange("trip2")}
+                  />
+                </Grid>
+                <Grid item xs={6} justify="center" alignItems="center">
+                  <Select
+                    classes={classes}
+                    styles={selectStyles}
+                    inputId="react-select-multiple"
+                    TextFieldProps={{
+                      label: "Types d'activités",
+                      InputLabelProps: {
+                        htmlFor: "react-select-multiple",
+                        shrink: true
+                      }
+                    }}
+                    placeholder="Activités"
+                    options={options2}
+                    components={components}
+                    value={
+                      values.trip2.activities
+                        ? values.trip2.activities.map(x => ({
+                            value: x.activity,
+                            label: x.activity
+                          }))
+                        : null
+                    }
+                    onChange={handleTripChange("trip2")}
+                    isMulti
+                  />
+                </Grid>
+              </Grid>
+              <br />
+              <Grid spacing={1} container direction="row" justify="flex-end">
+                <Grid
+                  item
+                  xs={2}
+                  container
+                  justify="center"
+                  alignItems="flex-start"
+                >
+                  #3
+                </Grid>
+                <Grid item xs={4} justify="center" alignItems="center">
+                  <Select
+                    classes={classes}
+                    styles={selectStyles}
+                    inputId="react-select-multiple"
+                    TextFieldProps={{
+                      label: "Mes pays favoris",
+                      InputLabelProps: {
+                        htmlFor: "react-select-multiple",
+                        shrink: true
+                      }
+                    }}
+                    placeholder="PAYS"
+                    options={this.state.countries.map(currentCountry => ({
+                      value: currentCountry.Pays,
+                      label: currentCountry.Pays
+                    }))}
+                    components={components}
+                    value={
+                      values.trip3.country
+                        ? {
+                            label: values.trip3.country,
+                            value: values.trip3.country
+                          }
+                        : null
+                    }
+                    onChange={handleCountryChange("trip3")}
+                  />
+                </Grid>
+                <Grid item xs={6} justify="center" alignItems="center">
+                  <Select
+                    classes={classes}
+                    styles={selectStyles}
+                    inputId="react-select-multiple"
+                    TextFieldProps={{
+                      label: "Types d'activités",
+                      InputLabelProps: {
+                        htmlFor: "react-select-multiple",
+                        shrink: true
+                      }
+                    }}
+                    placeholder="Activités"
+                    options={options2}
+                    components={components}
+                    value={
+                      values.trip3.activities
+                        ? values.trip3.activities.map(x => ({
+                            value: x.activity,
+                            label: x.activity
+                          }))
+                        : null
+                    }
+                    onChange={handleTripChange("trip3")}
+                    isMulti
+                  />
+                </Grid>
+              </Grid>
+              <br />
+              <Grid container direction="row">
+                <Grid
+                  item
+                  xs={6}
+                  container
+                  justify="flex-start"
+                  alignItems="center"
+                >
+                  <Button
+                    variant="contained"
+                    //color="primary"
+                    style={styles.button}
+                    onClick={this.back}
+                    spacing={1}
+                  >
+                    <Icon
+                      style={{
+                        fontSize: "35px"
+                      }}
+                    >
+                      navigate_before
+                    </Icon>
+                  </Button>
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  container
+                  justify="flex-end"
+                  alignItems="center"
+                >
+                  <Button
+                    variant="contained"
+                    color="rgb(0,0,0)"
+                    style={styles.button}
+                    onClick={continu}
+                  >
+                    <Icon
+                      style={{
+                        fontSize: "35px"
+                      }}
+                    >
+                      navigate_next
+                    </Icon>
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
           </div>
         </React.Fragment>
       </MuiThemeProvider>

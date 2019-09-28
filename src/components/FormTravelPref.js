@@ -10,7 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
@@ -23,14 +23,15 @@ import FormLabel from "@material-ui/core/FormLabel";
 import PropTypes from "prop-types";
 import Icon from "@material-ui/core/Icon";
 import { useTheme, withStyles } from "@material-ui/core/styles";
-import InputAdornment from '@material-ui/core/InputAdornment';
+import InputAdornment from "@material-ui/core/InputAdornment";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { red } from "@material-ui/core/colors";
 import {
-  emphasize,
+  emphasize
   // makeStyles,
   // useTheme,
 } from "@material-ui/core/styles";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -76,8 +77,7 @@ const styles = {
   textFieldEmail: {
     marginLeft: 24,
     marginRight: 24,
-    width: '30vw',
-
+    width: "30vw"
   },
   root: {
     flexGrow: 1,
@@ -137,7 +137,6 @@ const styles = {
   }
 };
 
-
 export class FormTravelPref extends Component {
   continue = e => {
     e.preventDefault();
@@ -148,19 +147,19 @@ export class FormTravelPref extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
-  
-UNSAFE_componentWillReceiveProps(nextProps) {
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
-        this.setState({
-          errors: nextProps.errors
-        });
-      }
+      this.setState({
+        errors: nextProps.errors
+      });
     }
+  }
 
   render() {
     const { classes, errors } = this.props;
 
-    const { values, handleChange } = this.props;
+    const { values, handleChange, handleSubmit } = this.props;
 
     return (
       <MuiThemeProvider>
@@ -178,22 +177,30 @@ UNSAFE_componentWillReceiveProps(nextProps) {
               <Typography variant="h6">Enter User Destination</Typography>
             </Toolbar>      
           </AppBar> */}
-          <Grid spacing={1}container direction="row">
-              <Grid item xs={5} container justify="flex-end" alignItems="center">
-                <Icon
-                  style={{
-                    color: "pink",
-                    fontSize: "75px",
-                    transform: "rotate(-20deg)",
-                  }}
-                >face</Icon>
-              </Grid>
-              <Grid item xs={7} container justify="flex-start" alignItems="center" >
-                <h1 className="textTitleCard">Qui êtes vous ?</h1>
-              </Grid>
+          <Grid spacing={1} container direction="row">
+            <Grid item xs={5} container justify="flex-end" alignItems="center">
+              <Icon
+                style={{
+                  color: "pink",
+                  fontSize: "75px",
+                  transform: "rotate(-20deg)"
+                }}
+              >
+                face
+              </Icon>
             </Grid>
-          
-          <form>
+            <Grid
+              item
+              xs={7}
+              container
+              justify="flex-start"
+              alignItems="center"
+            >
+              <h1 className="textTitleCard">Qui êtes vous ?</h1>
+            </Grid>
+          </Grid>
+
+          <form onSubmit={handleSubmit}>
             {/* <FormControl component="fieldset" className={classes.formControl}> */}
 
             <Grid container spacing={1}>
@@ -206,6 +213,15 @@ UNSAFE_componentWillReceiveProps(nextProps) {
                     defaultValue={values.firstName}
                     className={classes.textField}
                     variant="outlined"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <Icon style={{ color: "rgb(220,220,220)" }}>
+                            perm_identity
+                          </Icon>
+                        </InputAdornment>
+                      )
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -224,6 +240,15 @@ UNSAFE_componentWillReceiveProps(nextProps) {
                     defaultValue={values.lastName}
                     className={classes.textField}
                     variant="outlined"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <Icon style={{ color: "rgb(220,220,220)" }}>
+                            perm_identity
+                          </Icon>
+                        </InputAdornment>
+                      )
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -234,10 +259,17 @@ UNSAFE_componentWillReceiveProps(nextProps) {
                     label="Age"
                     onChange={handleChange("age")}
                     defaultValue={values.age}
-                    type="number"
+                    // value={values.age}
+                    //type="number"
                     className={classes.textFieldAge}
                     variant="outlined"
                   />
+                  <FormHelperText
+                    style={{ color: "red" }}
+                    id="component-error-text"
+                  >
+                    {values.errorText}
+                  </FormHelperText>
                 </FormControl>
               </Grid>
               <Grid item xs={6}>
@@ -276,26 +308,34 @@ UNSAFE_componentWillReceiveProps(nextProps) {
               </Select> */}
                 </FormControl>
               </Grid>
-              <Grid item xs={12} container justify="center" alignItems="center" >
+              <Grid item xs={12} container justify="center" alignItems="center">
                 <FormControl className={classes.formControl}>
                   <TextField
                     id="email"
                     label="Email"
-                    //onChange={handleChange("email")}
+                    onChange={handleChange("email")}
                     defaultValue={values.email}
                     type="email"
                     className={classes.textFieldEmail}
                     variant="outlined"
                     InputProps={{
-                      startAdornment: <InputAdornment position="start">@</InputAdornment>,
+                      startAdornment: (
+                        <InputAdornment position="start">@</InputAdornment>
+                      )
                     }}
                   />
                 </FormControl>
               </Grid>
             </Grid>
-            <br/>
+            <br />
             <Grid container direction="row">
-              <Grid item xs={6} container justify="flex-start" alignItems="center">
+              <Grid
+                item
+                xs={6}
+                container
+                justify="flex-start"
+                alignItems="center"
+              >
                 <Button
                   variant="contained"
                   //color="primary"
@@ -304,29 +344,38 @@ UNSAFE_componentWillReceiveProps(nextProps) {
                   spacing={1}
                 >
                   <Icon
-                  style={{
-                    fontSize: "35px",
-                  }}
-                >navigate_before</Icon>
+                    style={{
+                      fontSize: "35px"
+                    }}
+                  >
+                    navigate_before
+                  </Icon>
                 </Button>
               </Grid>
-              <Grid item xs={6} container justify="flex-end" alignItems="center">
+              <Grid
+                item
+                xs={6}
+                container
+                justify="flex-end"
+                alignItems="center"
+              >
                 <Button
                   variant="contained"
                   style={styles.button}
-                  onClick={this.continue}
+                  // onClick={this.continue}
                   spacing={1}
                   type="submit"
                 >
                   <Icon
-                  style={{
-                    fontSize: "35px",
-                  }}
-                >navigate_next</Icon>
+                    style={{
+                      fontSize: "35px"
+                    }}
+                  >
+                    navigate_next
+                  </Icon>
                 </Button>
               </Grid>
             </Grid>
-            
           </form>
         </React.Fragment>
       </MuiThemeProvider>

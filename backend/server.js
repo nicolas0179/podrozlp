@@ -12,7 +12,11 @@ app.use(express.json());
 const uri = keys.mongoURI;
 
 mongoose
-  .connect(uri, { useNewUrlParser: true, useCreateIndex: true })
+  .connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+  })
   .catch(err => console.log("Mongo connection error", err));
 
 const connection = mongoose.connection;

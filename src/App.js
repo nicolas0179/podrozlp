@@ -33,8 +33,8 @@ const styles = {
   card: {
     minWidth: 400,
     maxWidth: 1200,
-    overflow: "visible", 
-    borderRadius: "10px", 
+    overflow: "visible",
+    borderRadius: "10px",
     width: "60vw"
   },
   bullet: {
@@ -55,22 +55,32 @@ function App(props) {
 
   return (
     <div className="App">
-      <Grid container justify="center" style={{ opacity: "0.92" }}>
+      <Grid container justify="center" style={{ opacity: "0.95" }}>
         <Grid item xs={12}>
           {/* <img className="imgTitle" src={TitleImg} alt="Texte de Podroz"/> */}
-          <h1 className="textTitle" style={{textAlign:'center'}}>PODROZ</h1>
+          <h1 className="textTitle" style={{ textAlign: "center" }}>
+            PODROZ
+          </h1>
         </Grid>
         <Grid item xs={12}>
-          <p className="textSubTitle, hit-the-floor" style={{textAlign:'center'}}>
+          <p
+            className="textSubTitle, hit-the-floor"
+            style={{ textAlign: "center" }}
+          >
             VOS VACANCES TAILLÉES SUR MESURE
           </p>
         </Grid>
         <Grid item>
           <Card
-            // style={{ overflow: "visible", borderRadius: "10px", width: "60vw" }}
+            style={{
+              textAlign: "center"
+              // overflow: "visible",
+              // borderRadius: "10px",
+              // width: "60vw"
+            }}
             className={classes.card}
           >
-            <CardContent style={{position:'relative'}}>
+            <CardContent style={{ position: "relative" }}>
               <CustomForm />
             </CardContent>
           </Card>

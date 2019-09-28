@@ -12,6 +12,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.7.1"
+    "is-empty": "^1.2.0",
+    "mongoose": "^5.7.1",
+    "validator": "^11.1.0"
   }
 }
