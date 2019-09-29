@@ -146,6 +146,7 @@ class CustomForm extends Component {
     } = this.state;
 
     const values = {
+      step,
       email,
       firstName,
       lastName,
@@ -186,15 +187,15 @@ class CustomForm extends Component {
             errors={errors}
           />
         );
+      // case 3:
+      //   return (
+      //     <Confirm
+      //       nextStep={this.nextStep}
+      //       prevStep={this.prevStep}
+      //       values={values}
+      //     />
+      //   );
       case 3:
-        return (
-          <Confirm
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            values={values}
-          />
-        );
-      case 4:
         return <Success />;
       default:
         return <h1>Default</h1>;

@@ -35,8 +35,23 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 
+import ProgressStepper from "./ProgressStepper";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+
 // A custom theme for this app
 const theme = createMuiTheme({
+  overrides: {
+    MuiLinearProgress: {
+      colorPrimary: {
+        // background: "grey"
+      },
+      barColorPrimary: {
+        background: "linear-gradient(to right, #FFC371, #FF5F6D)"
+      }
+    }
+  },
   palette: {
     primary: {
       main: "#556cd6"
@@ -59,6 +74,10 @@ const styles = theme => ({
     flexGrow: 1,
     height: 250,
     minWidth: 290
+  },
+  stepper: {
+    flexGrow: 1,
+    margin: theme.spacing(3)
   },
   input: {
     display: "flex",
@@ -745,54 +764,31 @@ class FormDestination extends Component {
                     isMulti
                   />
                 </Grid>
-              </Grid>
-              <br />
-              <Grid container direction="row">
-                <Grid
-                  item
-                  xs={6}
-                  container
-                  justify="flex-start"
-                  alignItems="center"
-                >
-                  <Button
-                    variant="contained"
-                    //color="primary"
-                    style={styles.button}
-                    onClick={this.back}
-                    spacing={1}
-                  >
-                    <Icon
-                      style={{
-                        fontSize: "35px"
-                      }}
-                    >
-                      navigate_before
-                    </Icon>
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  container
-                  justify="flex-end"
-                  alignItems="center"
-                >
-                  <Button
-                    variant="contained"
-                    color="rgb(0,0,0)"
-                    style={styles.button}
-                    onClick={continu}
-                  >
-                    <Icon
-                      style={{
-                        fontSize: "35px"
-                      }}
-                    >
-                      navigate_next
-                    </Icon>
-                  </Button>
-                </Grid>
+                <MobileStepper
+                  variant="progress"
+                  steps={3}
+                  position="static"
+                  activeStep={values.step}
+                  className={classes.stepper}
+                  nextButton={
+                    <Button size="small" onClick={continu}>
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowLeft />
+                      ) : (
+                        <KeyboardArrowRight />
+                      )}
+                    </Button>
+                  }
+                  backButton={
+                    <Button size="small" onClick={this.back}>
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowRight />
+                      ) : (
+                        <KeyboardArrowLeft />
+                      )}
+                    </Button>
+                  }
+                />
               </Grid>
             </form>
           </div>

@@ -32,7 +32,20 @@ import {
   // useTheme,
 } from "@material-ui/core/styles";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+
+import ProgressStepper from "./ProgressStepper";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+
 const theme = createMuiTheme({
+  overrides: {
+    MuiLinearProgress: {
+      barColorPrimary: {
+        background: "linear-gradient(to right, #FFC371, #FF5F6D)"
+      }
+    }
+  },
   palette: {
     primary: {
       main: "#556cd6"
@@ -83,6 +96,10 @@ const styles = {
     flexGrow: 1,
     height: 250,
     minWidth: 290
+  },
+  stepper: {
+    flexGrow: 1,
+    margin: theme.spacing(3)
   },
   input: {
     display: "flex",
@@ -162,7 +179,7 @@ export class FormTravelPref extends Component {
     const { values, handleChange, handleSubmit } = this.props;
 
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider theme={theme}>
         <React.Fragment>
           <link
             rel="stylesheet"
@@ -326,55 +343,32 @@ export class FormTravelPref extends Component {
                   />
                 </FormControl>
               </Grid>
-            </Grid>
-            <br />
-            <Grid container direction="row">
-              <Grid
-                item
-                xs={6}
-                container
-                justify="flex-start"
-                alignItems="center"
-              >
-                <Button
-                  variant="contained"
-                  //color="primary"
-                  style={styles.button}
-                  onClick={this.back}
-                  spacing={1}
-                >
-                  <Icon
-                    style={{
-                      fontSize: "35px"
-                    }}
-                  >
-                    navigate_before
-                  </Icon>
-                </Button>
-              </Grid>
-              <Grid
-                item
-                xs={6}
-                container
-                justify="flex-end"
-                alignItems="center"
-              >
-                <Button
-                  variant="contained"
-                  style={styles.button}
-                  // onClick={this.continue}
-                  spacing={1}
-                  type="submit"
-                >
-                  <Icon
-                    style={{
-                      fontSize: "35px"
-                    }}
-                  >
-                    navigate_next
-                  </Icon>
-                </Button>
-              </Grid>
+              <MobileStepper
+                variant="progress"
+                steps={3}
+                position="static"
+                activeStep={values.step}
+                className={classes.stepper}
+                nextButton={
+                  <Button size="small" onClick={this.continue}>
+                    Envoyer
+                    {theme.direction === "rtl" ? (
+                      <KeyboardArrowLeft />
+                    ) : (
+                      <KeyboardArrowRight />
+                    )}
+                  </Button>
+                }
+                backButton={
+                  <Button size="small" onClick={this.back}>
+                    {theme.direction === "rtl" ? (
+                      <KeyboardArrowRight />
+                    ) : (
+                      <KeyboardArrowLeft />
+                    )}
+                  </Button>
+                }
+              />
             </Grid>
           </form>
         </React.Fragment>
