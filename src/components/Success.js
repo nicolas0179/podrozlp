@@ -1,17 +1,38 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import AppBar from "@material-ui/core/AppBar";
-import { Toolbar } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import { red } from "@material-ui/core/colors";
+import { createMuiTheme } from "@material-ui/core/styles";
+
+// A custom theme for this app
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#556cd6"
+    },
+    secondary: {
+      main: "#19857b"
+    },
+    error: {
+      main: red.A400
+    },
+    background: {
+      default: "#fff"
+    }
+  }
+});
 
 export class FormTravelPref extends Component {
+  /**
+   * NextPage
+   */
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
   };
 
+  /**
+   * PrevPage
+   */
   back = e => {
     e.preventDefault();
     this.props.prevStep();
@@ -19,21 +40,21 @@ export class FormTravelPref extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider theme={theme}>
         <React.Fragment>
-          {/* <AppBar position="static">
-            <Toolbar>
-              <IconButton edge="start" color="inherit" aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6">Confirm User Data</Typography>
-            </Toolbar>
-          </AppBar> */}
-          <h1>Suite</h1>
-          <p>
-            Vous allez recevoir prochainement un email pour obtenir des
-            recommandations personnalisées de lieux à découvrir
+          <h1 className="textTitleCard">Podroz vous remercie !</h1>
+          <p style={{ fontSize: "16px" }}>
+            Toutes ces informations nous permettent de faire évoluer Podroz.
+            Chacun de vos voyages à une réelle importance pour nous !
+            <br /> Vous trouverez davantages d'informations sur notre projet ici
+            : WWW.YOUTEUBETUB.FR, et si vous souhaitez nous contacter ce sera
+            ici : contact@waterbot.fr <br />
+            N'hésitez pas à nous partager à tous vos amis amateurs de voyages
           </p>
+          <h1 className="textTitleCard" style={{ fontSize: "30px" }}>
+            {" "}
+            Encore merci & à bientôt :){" "}
+          </h1>
         </React.Fragment>
       </MuiThemeProvider>
     );

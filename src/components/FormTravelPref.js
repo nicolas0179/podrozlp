@@ -1,43 +1,25 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import AppBar from "@material-ui/core/AppBar";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { Toolbar } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import { makeStyles } from "@material-ui/core/styles";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import FormLabel from "@material-ui/core/FormLabel";
 import PropTypes from "prop-types";
 import Icon from "@material-ui/core/Icon";
-import { useTheme, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { red } from "@material-ui/core/colors";
-import {
-  emphasize
-  // makeStyles,
-  // useTheme,
-} from "@material-ui/core/styles";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-
-import ProgressStepper from "./ProgressStepper";
+import { emphasize } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
+/**
+ * Création du Mui Theme
+ */
 const theme = createMuiTheme({
   overrides: {
     MuiLinearProgress: {
@@ -61,6 +43,10 @@ const theme = createMuiTheme({
     }
   }
 });
+
+/**
+ * Création de la liste des sexes
+ */
 const sex_options = [
   {
     value: "femme",
@@ -76,6 +62,9 @@ const sex_options = [
   }
 ];
 
+/**
+ * Création des styles CSS pour ce component
+ */
 const styles = {
   textField: {
     marginLeft: 24,
@@ -154,27 +143,44 @@ const styles = {
   }
 };
 
+/**
+ * Déclaration de la class component
+ */
 export class FormTravelPref extends Component {
+  /**
+   * NextPage
+   */
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
   };
-
+  /**
+   * PrevPage
+   */
   back = e => {
     e.preventDefault();
     this.props.prevStep();
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors
-      });
-    }
-  }
+  /**
+   *
+   */
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (nextProps.errors) {
+  //     this.setState({
+  //       errors: nextProps.errors
+  //     });
+  //   }
+  // }
 
+  /**
+   * Fonction de rendu du component
+   */
   render() {
-    const { classes, errors } = this.props;
+    /**
+     * Déclaration des constantes
+     */
+    const { classes } = this.props;
 
     const { values, handleChange, handleSubmit } = this.props;
 
@@ -185,15 +191,7 @@ export class FormTravelPref extends Component {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-          {/* <AppBar position="static">
-            <Toolbar style = {{backgroundColor:"white"}}>
-              <IconButton edge="start" color="inherit" aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              
-              <Typography variant="h6">Enter User Destination</Typography>
-            </Toolbar>      
-          </AppBar> */}
+
           <Grid spacing={1} container direction="row">
             <Grid item xs={5} container justify="flex-end" alignItems="center">
               <Icon
@@ -201,8 +199,7 @@ export class FormTravelPref extends Component {
                   color: "pink",
                   fontSize: "75px",
                   transform: "rotate(-20deg)"
-                }}
-              >
+                }}>
                 face
               </Icon>
             </Grid>
@@ -211,15 +208,12 @@ export class FormTravelPref extends Component {
               xs={7}
               container
               justify="flex-start"
-              alignItems="center"
-            >
+              alignItems="center">
               <h1 className="textTitleCard">Qui êtes vous ?</h1>
             </Grid>
           </Grid>
 
-          <form onSubmit={handleSubmit}>
-            {/* <FormControl component="fieldset" className={classes.formControl}> */}
-
+          <form>
             <Grid container spacing={1}>
               <Grid item xs={6}>
                 <FormControl className={classes.formControl}>
@@ -242,13 +236,7 @@ export class FormTravelPref extends Component {
                   />
                 </FormControl>
               </Grid>
-              <Grid
-                item
-                xs={6}
-                justify="flex-start"
-                alignItems="flex-start"
-                alignContent="flex-start"
-              >
+              <Grid item xs={6}>
                 <FormControl className={classes.formControl}>
                   <TextField
                     id="lastName"
@@ -276,15 +264,12 @@ export class FormTravelPref extends Component {
                     label="Age"
                     onChange={handleChange("age")}
                     defaultValue={values.age}
-                    // value={values.age}
-                    //type="number"
                     className={classes.textFieldAge}
                     variant="outlined"
                   />
                   <FormHelperText
                     style={{ color: "red" }}
-                    id="component-error-text"
-                  >
+                    id="component-error-text">
                     {values.errorText}
                   </FormHelperText>
                 </FormControl>
@@ -298,31 +283,13 @@ export class FormTravelPref extends Component {
                     className={classes.textField}
                     value={values.sex}
                     onChange={handleChange("sex")}
-                    variant="outlined"
-                  >
+                    variant="outlined">
                     {sex_options.map(option => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
                       </MenuItem>
                     ))}
                   </TextField>
-
-                  {/* <InputLabel htmlFor="age-native-required">Sexe</InputLabel>
-              <Select
-                variant="outlined"
-                native
-                value={values.sex}
-                onChange={handleChange('sex')}
-                inputProps={{
-                  name: 'age',
-                  id: 'age-native-simple',
-                }}
-              >
-                <option value=""/>
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
-                <option value="autre">Autre</option>
-              </Select> */}
                 </FormControl>
               </Grid>
               <Grid item xs={12} container justify="center" alignItems="center">
@@ -350,7 +317,7 @@ export class FormTravelPref extends Component {
                 activeStep={values.step}
                 className={classes.stepper}
                 nextButton={
-                  <Button size="small" onClick={this.continue}>
+                  <Button size="small" onClick={handleSubmit}>
                     Envoyer
                     {theme.direction === "rtl" ? (
                       <KeyboardArrowLeft />

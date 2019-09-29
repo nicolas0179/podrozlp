@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+/**
+ * Schéma de réponse du formulaire
+ */
 const answerSchema = new Schema(
   {
     firstName: { type: String, required: true },
@@ -9,9 +12,15 @@ const answerSchema = new Schema(
     email: { type: String, required: true, unique: true, trim: true },
     age: { type: Number, required: true },
     sex: { type: String, required: true },
+    entourage: [
+      {
+        entourageCategory: { type: String }
+      }
+    ],
     trips: [
       {
         country: { type: String },
+        stayLength: { type: String },
         activities: [
           {
             activity: { type: String }

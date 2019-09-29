@@ -1,23 +1,15 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import AppBar from "@material-ui/core/AppBar";
+// import AppBar from "@material-ui/core/AppBar";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { Toolbar, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import axios from "axios";
 
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import {
-  emphasize,
-  // makeStyles,
-  // useTheme,
-  withStyles
-} from "@material-ui/core/styles";
-// import NoSsr from "@material-ui/core/NoSsr";
+import { emphasize, withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -28,14 +20,6 @@ import { red } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Checkbox from "@material-ui/core/Checkbox";
-
-import ProgressStepper from "./ProgressStepper";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
@@ -68,7 +52,6 @@ const theme = createMuiTheme({
   }
 });
 
-// const useStyles = makeStyles(theme => ({
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -78,6 +61,10 @@ const styles = theme => ({
   stepper: {
     flexGrow: 1,
     margin: theme.spacing(3)
+  },
+  labelStyle: {
+    color: "rgb(220,220,220)",
+    fontSize: "12px"
   },
   input: {
     display: "flex",
@@ -131,49 +118,8 @@ const styles = theme => ({
     margin: theme.spacing(3)
   }
 });
-// )
 
-// const options = [
-//   { label: "Afghanistan" },
-//   { label: "Aland Islands" },
-//   { label: "Albania" },
-//   { label: "Algeria" },
-//   { label: "American Samoa" },
-//   { label: "Andorra" },
-//   { label: "Angola" },
-//   { label: "Anguilla" },
-//   { label: "Antarctica" },
-//   { label: "Antigua and Barbuda" },
-//   { label: "Argentina" },
-//   { label: "Armenia" },
-//   { label: "Aruba" },
-//   { label: "Australia" },
-//   { label: "Austria" },
-//   { label: "Azerbaijan" },
-//   { label: "Bahamas" },
-//   { label: "Bahrain" },
-//   { label: "Bangladesh" },
-//   { label: "Barbados" },
-//   { label: "Belarus" },
-//   { label: "Belgium" },
-//   { label: "Belize" },
-//   { label: "Benin" },
-//   { label: "Bermuda" },
-//   { label: "Bhutan" },
-//   { label: "Bolivia, Plurinational State of" },
-//   { label: "Bonaire, Sint Eustatius and Saba" },
-//   { label: "Bosnia and Herzegovina" },
-//   { label: "Botswana" },
-//   { label: "Bouvet Island" },
-//   { label: "Brazil" },
-//   { label: "British Indian Ocean Territory" },
-//   { label: "Brunei Darussalam" }
-// ].map(option => ({
-//   value: option.label,
-//   label: option.label
-// }));
-
-const options2 = [
+const optionsActivities = [
   { label: "Nature" },
   { label: "Plage" },
   { label: "Shopping" },
@@ -188,13 +134,37 @@ const options2 = [
   label: option.label
 }));
 
+const optionsStayLength = [
+  { label: "Quelques jours" },
+  { label: "Inférieure à 2 semaines" },
+  { label: "De 2 semaines à 1 mois" },
+  { label: "Supérieure à 1 mois" }
+].map(option => ({
+  value: option.label,
+  label: option.label
+}));
+
+const optionsEntourage = [
+  { label: "En Famille" },
+  { label: "Entre Amis" },
+  { label: "En Couple" },
+  { label: "En Solo" },
+  { label: "Avec enfant(s)" }
+].map(option => ({
+  value: option.label,
+  label: option.label
+}));
+
+/******************************************
+ *** Components pour le multiple select ***
+ ******************************************/
+
 function NoOptionsMessage(props) {
   return (
     <Typography
       color="textSecondary"
       className={props.selectProps.classes.noOptionsMessage}
-      {...props.innerProps}
-    >
+      {...props.innerProps}>
       {props.children}
     </Typography>
   );
@@ -280,8 +250,7 @@ function Option(props) {
       style={{
         fontWeight: props.isSelected ? 500 : 400
       }}
-      {...props.innerProps}
-    >
+      {...props.innerProps}>
       {props.children}
     </MenuItem>
   );
@@ -306,13 +275,7 @@ Option.propTypes = {
   /**
    * Inner ref to DOM Node
    */
-  // innerRef: PropTypes.oneOfType([
-  //   PropTypes.oneOf([null]),
-  //   PropTypes.func,
-  //   PropTypes.shape({
-  //     current: PropTypes.any.isRequired
-  //   })
-  // ]).isRequired,
+
   /**
    * Whether the option is focused.
    */
@@ -328,9 +291,9 @@ function Placeholder(props) {
   return (
     <Typography
       color="textSecondary"
+      style={{ fontSize: "12px", color: "rgb(220,220,220)" }}
       className={selectProps.classes.placeholder}
-      {...innerProps}
-    >
+      {...innerProps}>
       {children}
     </Typography>
   );
@@ -347,29 +310,6 @@ Placeholder.propTypes = {
   innerProps: PropTypes.object,
   selectProps: PropTypes.object.isRequired
 };
-
-// function SingleValue(props) {
-//   return (
-//     <Typography
-//       className={props.selectProps.classes.singleValue}
-//       {...props.innerProps}
-//     >
-//       {props.children}
-//     </Typography>
-//   );
-// }
-
-// SingleValue.propTypes = {
-//   /**
-//    * The children to be rendered.
-//    */
-//   children: PropTypes.node,
-//   /**
-//    * Props passed to the wrapping element for the group.
-//    */
-//   innerProps: PropTypes.any.isRequired,
-//   selectProps: PropTypes.object.isRequired
-// };
 
 function ValueContainer(props) {
   return (
@@ -417,8 +357,7 @@ function Menu(props) {
     <Paper
       square
       className={props.selectProps.classes.paper}
-      {...props.innerProps}
-    >
+      {...props.innerProps}>
       {props.children}
     </Paper>
   );
@@ -446,18 +385,28 @@ const components = {
   // SingleValue,
   ValueContainer
 };
-// const classes = useStyles();
-// const theme = useTheme();
+
+/******************************
+ *** Classe FormDestination ***
+ ******************************/
+
 class FormDestination extends Component {
   constructor(props) {
     super(props);
     this.state = { countries: [] };
   }
 
+  /**
+   * Fonction de retour dans la navigation des cards
+   */
   back = e => {
     e.preventDefault();
     this.props.prevStep();
   };
+
+  /**
+   * Récupération de la BDD de pays pour l'afficher dans les options du Select
+   */
   componentDidMount() {
     axios
       .get("http://localhost:5000/pays")
@@ -473,25 +422,15 @@ class FormDestination extends Component {
     const { classes } = this.props;
     const {
       values,
-      handleChange,
       handleCountryChange,
-      handleThemeChange,
-      handleCheck,
       handleTripChange,
-      handleSubmit
+      handleStayLengthChange,
+      handleEntourageChange
     } = this.props;
-    console.log("values = ", values);
-    console.log(values.trip1.country);
-    console.log(values.trip2.country);
-    console.log(values.trip3.country);
-    console.log(values.selectedOption);
-    // const [multi, setMulti] = React.useState(values.selectedOption);
 
-    // const handleChangeMulti = value => {
-    //   setMulti(value);
-    //   console.log(multi);
-    // };
-
+    /**
+     * Fonction suivant dans la navigation des cards
+     */
     const continu = e => {
       e.preventDefault();
       this.props.nextStep();
@@ -513,14 +452,8 @@ class FormDestination extends Component {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-          {console.log("=========>", "Values in JSX", values)}
           <div style={{ textAlign: "center" }}>
             <form>
-              {/* <Select
-            options={options}
-            onChange={handleCountryChange}
-            value={values.selectedOption}
-          /> */}
               <br />
               <Grid spacing={1} container direction="row">
                 <Grid
@@ -528,15 +461,13 @@ class FormDestination extends Component {
                   xs={2}
                   container
                   justify="flex-end"
-                  alignItems="center"
-                >
+                  alignItems="center">
                   <Icon
                     style={{
                       color: "pink",
                       fontSize: "75px",
                       transform: "rotate(45deg)"
-                    }}
-                  >
+                    }}>
                     airplanemode_active
                   </Icon>
                 </Grid>
@@ -545,10 +476,9 @@ class FormDestination extends Component {
                   xs={10}
                   container
                   justify="flex-start"
-                  alignItems="center"
-                >
+                  alignItems="center">
                   <h1 className="textTitleCard">
-                    Dites-nous en plus sur vos destinations favorites
+                    Dites-nous en plus sur vos destinations préférées
                   </h1>
                 </Grid>
               </Grid>
@@ -557,17 +487,31 @@ class FormDestination extends Component {
                 chacune d'entres elles, préciser quelles activités vous ont
                 motivées à partir{" "}
               </p>
-              <Grid spacing={1} container direction="row" justify="flex-end">
+              <Grid spacing={1} container direction="row" justify="center">
                 <Grid
                   item
-                  xs={2}
+                  xs={3}
                   container
                   justify="center"
-                  alignItems="flex-start"
-                >
-                  #1
+                  alignItems="flex-start">
+                  <TextField
+                    fullWidth
+                    id="stayLength"
+                    select
+                    label="Durée séjour"
+                    value={
+                      values.trip1.stayLength ? values.trip1.stayLength : ""
+                    }
+                    onChange={handleStayLengthChange("trip1")}>
+                    {optionsStayLength.map(option => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 </Grid>
-                <Grid item xs={4} justify="center" alignItems="center">
+
+                <Grid item xs={4}>
                   <Select
                     classes={classes}
                     styles={selectStyles}
@@ -579,7 +523,7 @@ class FormDestination extends Component {
                         shrink: true
                       }
                     }}
-                    placeholder="AAAAA"
+                    placeholder="Ex : Italie"
                     options={this.state.countries.map(currentCountry => ({
                       value: currentCountry.Pays,
                       label: currentCountry.Pays
@@ -591,17 +535,12 @@ class FormDestination extends Component {
                             label: values.trip1.country,
                             value: values.trip1.country
                           }
-                        : null
+                        : ""
                     }
                     onChange={handleCountryChange("trip1")}
                   />
-                  {console.log(
-                    "=========>",
-                    "values.trip1.country : ",
-                    values.trip1.country
-                  )}
                 </Grid>
-                <Grid item xs={6} justify="center" alignItems="center">
+                <Grid item xs={5}>
                   <Select
                     classes={classes}
                     styles={selectStyles}
@@ -613,8 +552,8 @@ class FormDestination extends Component {
                         shrink: true
                       }
                     }}
-                    placeholder="Activités"
-                    options={options2}
+                    placeholder="Ex : Soirée"
+                    options={optionsActivities}
                     components={components}
                     value={
                       values.trip1.activities
@@ -622,7 +561,7 @@ class FormDestination extends Component {
                             value: x.activity,
                             label: x.activity
                           }))
-                        : null
+                        : ""
                     }
                     onChange={handleTripChange("trip1")}
                     isMulti
@@ -633,14 +572,28 @@ class FormDestination extends Component {
               <Grid spacing={1} container direction="row" justify="flex-end">
                 <Grid
                   item
-                  xs={2}
+                  xs={3}
                   container
                   justify="center"
-                  alignItems="flex-start"
-                >
-                  #2
+                  alignItems="center">
+                  <TextField
+                    fullWidth
+                    id="stayLength"
+                    select
+                    label="Durée séjour"
+                    className={classes.textField}
+                    value={
+                      values.trip2.stayLength ? values.trip2.stayLength : ""
+                    }
+                    onChange={handleStayLengthChange("trip2")}>
+                    {optionsStayLength.map(option => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 </Grid>
-                <Grid item xs={4} justify="center" alignItems="center">
+                <Grid item xs={4}>
                   <Select
                     classes={classes}
                     styles={selectStyles}
@@ -652,7 +605,7 @@ class FormDestination extends Component {
                         shrink: true
                       }
                     }}
-                    placeholder="Italie, Thaïlande ..."
+                    placeholder="Ex : Japon"
                     options={this.state.countries.map(currentCountry => ({
                       value: currentCountry.Pays,
                       label: currentCountry.Pays
@@ -664,12 +617,12 @@ class FormDestination extends Component {
                             label: values.trip2.country,
                             value: values.trip2.country
                           }
-                        : null
+                        : ""
                     }
                     onChange={handleCountryChange("trip2")}
                   />
                 </Grid>
-                <Grid item xs={6} justify="center" alignItems="center">
+                <Grid item xs={5}>
                   <Select
                     classes={classes}
                     styles={selectStyles}
@@ -681,8 +634,8 @@ class FormDestination extends Component {
                         shrink: true
                       }
                     }}
-                    placeholder="Activités"
-                    options={options2}
+                    placeholder="Ex : Nature"
+                    options={optionsActivities}
                     components={components}
                     value={
                       values.trip2.activities
@@ -690,7 +643,7 @@ class FormDestination extends Component {
                             value: x.activity,
                             label: x.activity
                           }))
-                        : null
+                        : ""
                     }
                     onChange={handleTripChange("trip2")}
                     isMulti
@@ -701,14 +654,28 @@ class FormDestination extends Component {
               <Grid spacing={1} container direction="row" justify="flex-end">
                 <Grid
                   item
-                  xs={2}
+                  xs={3}
                   container
                   justify="center"
-                  alignItems="flex-start"
-                >
-                  #3
+                  alignItems="center">
+                  <TextField
+                    fullWidth
+                    id="stayLength"
+                    select
+                    label="Durée séjour"
+                    className={classes.textField}
+                    value={
+                      values.trip3.stayLength ? values.trip3.stayLength : ""
+                    }
+                    onChange={handleStayLengthChange("trip3")}>
+                    {optionsStayLength.map(option => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 </Grid>
-                <Grid item xs={4} justify="center" alignItems="center">
+                <Grid item xs={4}>
                   <Select
                     classes={classes}
                     styles={selectStyles}
@@ -720,7 +687,7 @@ class FormDestination extends Component {
                         shrink: true
                       }
                     }}
-                    placeholder="PAYS"
+                    placeholder="Ex : Mexique"
                     options={this.state.countries.map(currentCountry => ({
                       value: currentCountry.Pays,
                       label: currentCountry.Pays
@@ -732,12 +699,12 @@ class FormDestination extends Component {
                             label: values.trip3.country,
                             value: values.trip3.country
                           }
-                        : null
+                        : ""
                     }
                     onChange={handleCountryChange("trip3")}
                   />
                 </Grid>
-                <Grid item xs={6} justify="center" alignItems="center">
+                <Grid item xs={5}>
                   <Select
                     classes={classes}
                     styles={selectStyles}
@@ -749,8 +716,8 @@ class FormDestination extends Component {
                         shrink: true
                       }
                     }}
-                    placeholder="Activités"
-                    options={options2}
+                    placeholder="Ex : Culture, Histoire"
+                    options={optionsActivities}
                     components={components}
                     value={
                       values.trip3.activities
@@ -758,12 +725,50 @@ class FormDestination extends Component {
                             value: x.activity,
                             label: x.activity
                           }))
-                        : null
+                        : ""
                     }
                     onChange={handleTripChange("trip3")}
                     isMulti
                   />
                 </Grid>
+              </Grid>
+              <br />
+              <p style={{ fontSize: "14px" }}>
+                De manière générale, qui sont vos compagnons de voyage ?
+                <br />
+                (plusieurs choix possibles){" "}
+              </p>
+              <Grid spacing={1} container direction="row" justify="center">
+                <Grid item xs={8}>
+                  <Select
+                    fullWidth
+                    classes={classes}
+                    styles={selectStyles}
+                    inputId="react-select-multiple"
+                    TextFieldProps={{
+                      label: "Entourage",
+                      InputLabelProps: {
+                        htmlFor: "react-select-multiple",
+                        shrink: true
+                      }
+                    }}
+                    placeholder="Ex : En Famille, Avec enfant(s)"
+                    options={optionsEntourage}
+                    components={components}
+                    value={
+                      values.entourage
+                        ? values.entourage.map(x => ({
+                            value: x.entourageCategory,
+                            label: x.entourageCategory
+                          }))
+                        : ""
+                    }
+                    onChange={handleEntourageChange}
+                    isMulti
+                  />
+                </Grid>
+              </Grid>
+              <Grid spacing={1} container direction="row" justify="flex-end">
                 <MobileStepper
                   variant="progress"
                   steps={3}

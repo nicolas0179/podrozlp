@@ -1,11 +1,12 @@
 import React from "react";
-
-import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
-import { withStyles, rgbToHex } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
+// #####
+/**
+ * Style du bouton "Tenter l'aventure"
+ */
 const ColorButton = withStyles(theme => ({
   root: {
     fontWeight: 800,
@@ -16,17 +17,13 @@ const ColorButton = withStyles(theme => ({
     "&:hover": {
       transform: "scale(1.05)",
       boxShadow: "0 6px 10px 4px rgba(255, 105, 135, .3)"
-    },
-  
-    // color: 'rgba(255,255,255,1)',
-    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    // '&:hover': {
-    //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    //   boxShadow: '0 6px 10px 4px rgba(255, 105, 135, .3)',
-    // },
+    }
   }
 }))(Button);
 
+/**
+ * Style CSS de la page
+ */
 const styles = {
   card: {
     minWidth: 400,
@@ -44,10 +41,13 @@ const styles = {
     marginBottom: 12
   },
   margin: {
-    textAlign:'center',
+    textAlign: "center"
   }
 };
 
+/**
+ * Fonction de navigation entre CARD
+ */
 function AccrocheText(props) {
   const { classes } = props;
   const continu = e => {
@@ -55,28 +55,31 @@ function AccrocheText(props) {
     props.nextStep();
   };
 
+  /**
+   * RENDU DE LA PAGE
+   */
   return (
-    <div style={{textAlign:'center'}}>
+    <div style={{ textAlign: "center" }}>
       <p
         style={{
           paddingLeft: "30px",
           paddingRight: "30px",
           paddingTop: "30px",
           fontSize: "20px"
-        }}
-      >
+        }}>
         PODROZ est la première plateforme gratuite vous proposant des séjours
         qui vous correspondent
-        <br /><br />Du choix de la destination, jusqu'aux activités quotidiennes
-        Nous vous accompagnons pour tracer le séjour idéal !
+        <br />
+        <br />
+        Du choix de la destination, jusqu'aux activités quotidiennes en passant
+        par le logement... Nous vous accompagnons pour tracer le séjour idéal !
       </p>
       <p
         style={{
           paddingLeft: "30px",
           paddingRight: "30px",
           fontSize: "20px"
-        }}
-      >
+        }}>
         Dites-nous qui vous êtes et nous vous dirons où aller :
       </p>
       <ColorButton
@@ -84,27 +87,36 @@ function AccrocheText(props) {
         color="primary"
         className={classes.margin}
         onClick={continu}
-        style={{marginBottom:'50px'}}
-      >
+        style={{ marginBottom: "50px" }}>
         Tentez l'aventure
       </ColorButton>
-      <div style={{position:'absolute', bottom:'0', right:'0', marginRight:'10px'}}>
-      <p style={{
-        
-          fontSize: "15px",
-          textAlign:'right'
+      <div
+        style={{
+          position: "absolute",
+          bottom: "0",
+          right: "0",
+          marginRight: "10px"
         }}>
-        {" "}
-        Mentions légales - Contact
-      </p>
-    </div>
+        <p
+          style={{
+            fontSize: "15px",
+            textAlign: "right"
+          }}>
+          {" "}
+          Des questions ? contact@waterbot.fr
+        </p>
+      </div>
     </div>
   );
 }
-
+/**
+ * Passage du propTypes
+ */
 AccrocheText.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+/**
+ * Export de la classe
+ */
 export default withStyles(styles)(AccrocheText);
-// export default AccrocheText;

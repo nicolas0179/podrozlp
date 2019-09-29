@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-
 import FormDestination from "./FormDestination";
 import FormTravelPref from "./FormTravelPref";
-import Confirm from "./Confirm";
 import Success from "./Success";
 import AccrocheText from "./AccrocheText";
 import axios from "axios";
@@ -10,6 +8,9 @@ import axios from "axios";
 axios.defaults.baseURL = "http://localhost:5000";
 
 class CustomForm extends Component {
+  /**
+   * Déclaration des states
+   */
   state = {
     step: 0,
     firstName: "",
@@ -17,9 +18,10 @@ class CustomForm extends Component {
     age: "",
     sex: "",
     email: "",
-    trip1: { country: null, activities: null },
-    trip2: { country: null, activities: null },
-    trip3: { country: null, activities: null },
+    entourage: null,
+    trip1: { country: null, stayLength: "", activities: null },
+    trip2: { country: null, stayLength: "", activities: null },
+    trip3: { country: null, stayLength: "", activities: null },
     errors: {},
     errorText: ""
   };
@@ -42,17 +44,16 @@ class CustomForm extends Component {
 
   // Handle fields change
   handleChange = input => e => {
+    //VALIDATION DU FIELD Age
     if (input === "age") {
       if (!isNaN(e.target.value)) {
         this.setState({ [input]: e.target.value, errorText: "" });
-        console.log("ok it's number");
         return;
       } else {
         e.target.value = "";
         this.setState({
           errorText: "Un âge c'est des chiffres :)"
         });
-        console.log("notnumber");
         return;
       }
     }
@@ -65,73 +66,116 @@ class CustomForm extends Component {
     this.setState({ ...this.state, [name]: event.target.checked });
   };
 
+  /**
+   * Récupération des données des destinations dans trip
+   * Par un système de copie !
+   * exemple :
+   * a=(0,0)
+   * b=a
+   * b(1) = 1
+   * a=b
+   * a=(1,0)
+   */
   handleCountryChange = trip => e => {
     let tripCopy = JSON.parse(JSON.stringify(this.state[trip]));
-    console.log(tripCopy);
-    console.log(`Event: `, e);
     tripCopy.country = e.value;
 
     this.setState({
       [trip]: tripCopy
     });
-    console.log("State : ", this.state);
   };
 
+  /**
+   * Récupération des données des destinations dans trip
+   * Par un système de copie !
+   * exemple :
+   * a=(0,0)
+   * b=a
+   * b(1) = 1
+   * a=b
+   * a=(1,0)
+   */
+  handleStayLengthChange = trip => e => {
+    let tripCopy = JSON.parse(JSON.stringify(this.state[trip]));
+
+    tripCopy.stayLength = e.target.value;
+
+    this.setState({
+      [trip]: tripCopy
+    });
+  };
+  /**
+   * Récupération des données des destinations dans trip
+   * Par un système de copie !
+   * exemple :
+   * a=(0,0)
+   * b=a
+   * b(1) = 1
+   * a=b
+   * a=(1,0)
+   */
   handleTripChange = trip => e => {
     let tripCopy = JSON.parse(JSON.stringify(this.state[trip]));
-    console.log(tripCopy);
-    console.log(`Event: `, e);
     tripCopy.activities = [];
 
     if (!(e == null)) {
       for (var i = 0; i < e.length; i++) {
         tripCopy.activities.push({
-          // activity: { value: e[i].value, label: e[i].label }
           activity: e[i].value
         });
       }
-
-      // tripCopy.activities = e.map(x => x.value);
     }
     this.setState({
       [trip]: tripCopy
     });
-    // this.setState({ [trip]: e.target.value });
-    // console.log(`Trip:`, this.state.trip1);
   };
 
-  handleThemeChange = selectedOption2 => {
-    this.setState({ selectedOption2 });
-    console.log(`Option selected:`, selectedOption2);
+  /**
+   * Récupération des données des entourages
+   */
+  handleEntourageChange = e => {
+    var entourageCopy = [];
+
+    if (!(e == null)) {
+      for (var i = 0; i < e.length; i++) {
+        entourageCopy.push({ entourageCategory: e[i].value });
+      }
+    }
+    this.setState({
+      entourage: entourageCopy
+    });
   };
 
+  /**
+   * Fonction de gestion d'envoi des données
+   */
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     const answer = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       age: Number(this.state.age),
       sex: this.state.sex,
       email: this.state.email,
+      entourage: this.state.entourage,
       trips: [this.state.trip1, this.state.trip2, this.state.trip3]
-      // trip1: this.state.trip1,
-      // trip2: this.state.trip2,
-      // trip3: this.state.trip3
     };
-
-    console.log("answer : ", answer);
+    console.log("Yo");
     axios
       .post("/answers/add", answer)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data);
+        this.nextStep();
+      })
       .catch(function(error) {
-        console.log(error);
+        alert("Certains champs ne sont pas valides");
       });
-
-    // window.location = "/";
   };
 
   render() {
+    /**
+     * Déclartion des states
+     */
     const { step, errors } = this.state;
     const {
       email,
@@ -142,9 +186,12 @@ class CustomForm extends Component {
       trip1,
       trip2,
       trip3,
+      entourage,
       errorText
     } = this.state;
-
+    /*
+     * On stock les states dans values pour ensuite passer values dans les autres components
+     */
     const values = {
       step,
       email,
@@ -155,6 +202,7 @@ class CustomForm extends Component {
       trip1,
       trip2,
       trip3,
+      entourage,
       errorText
     };
 
@@ -167,10 +215,11 @@ class CustomForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleCountryChange={this.handleCountryChange}
-            handleThemeChange={this.handleThemeChange}
             handleChange={this.handleChange}
             handleCheck={this.handleCheck}
             handleTripChange={this.handleTripChange}
+            handleStayLengthChange={this.handleStayLengthChange}
+            handleEntourageChange={this.handleEntourageChange}
             handleSubmit={this.handleSubmit}
             values={values}
             errors={errors}
@@ -187,14 +236,7 @@ class CustomForm extends Component {
             errors={errors}
           />
         );
-      // case 3:
-      //   return (
-      //     <Confirm
-      //       nextStep={this.nextStep}
-      //       prevStep={this.prevStep}
-      //       values={values}
-      //     />
-      //   );
+
       case 3:
         return <Success />;
       default:
