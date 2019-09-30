@@ -5,7 +5,11 @@ import Success from "./Success";
 import AccrocheText from "./AccrocheText";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:5000";
+// const keys = require("../keys");
+
+// axios.defaults.baseURL = keys.baseUrl;
+
+axios.defaults.baseURL = "http://51.75.203.108:5000";
 
 class CustomForm extends Component {
   /**
