@@ -42,7 +42,7 @@ export class FormTravelPref extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <React.Fragment>
-          <h1 className="textTitleCard">Podroz vous remercie !</h1>
+          <h1 className="textTitleCard"> Podroz vous remercie !</h1>
           <p style={{ fontSize: "16px" }}>
             Toutes ces informations nous permettent de faire évoluer Podroz.
             Chacun de vos voyages à une réelle importance pour nous !

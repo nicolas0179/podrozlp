@@ -67,12 +67,13 @@ function AccrocheText(props) {
           paddingTop: "30px",
           fontSize: "20px"
         }}>
-        PODROZ est la première plateforme gratuite vous proposant des séjours
-        qui vous correspondent
+        <span className="podrozInline">PODROZ</span> est la première plateforme
+        gratuite vous proposant des séjours qui vous correspondent
         <br />
         <br />
-        Du choix de la destination, jusqu'aux activités quotidiennes en passant
-        par le logement... Nous vous accompagnons pour tracer le séjour idéal !
+        Du choix de la destination, jusqu'au logement en passant par vos
+        activités quotidiennes... Nous vous accompagnons pour tracer le séjour
+        idéal !
       </p>
       <p
         style={{
@@ -88,7 +89,7 @@ function AccrocheText(props) {
         className={classes.margin}
         onClick={continu}
         style={{ marginBottom: "50px" }}>
-        Tentez l'aventure
+        Tenter l'aventure
       </ColorButton>
       <div
         style={{

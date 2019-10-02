@@ -304,7 +304,11 @@ export class FormTravelPref extends Component {
                     variant="outlined"
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment position="start">@</InputAdornment>
+                        <InputAdornment position="start">
+                          <Icon style={{ color: "rgb(220,220,220)" }}>
+                            email
+                          </Icon>
+                        </InputAdornment>
                       )
                     }}
                   />

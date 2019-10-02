@@ -47,3 +47,8 @@ h1 {
 FormHelperText {
   color: red;
 }
+.podrozInline {
+  font-family: "SignPainter";
+  font-weight: 800;
+  font-size: 23px;
+}
