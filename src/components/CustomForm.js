@@ -17,8 +17,7 @@ class CustomForm extends Component {
    */
   state = {
     step: 0,
-    firstName: "",
-    lastName: "",
+    name: "",
     age: "",
     sex: "",
     email: "",
@@ -27,7 +26,8 @@ class CustomForm extends Component {
     trip2: { country: null, stayLength: "", activities: null },
     trip3: { country: null, stayLength: "", activities: null },
     errors: {},
-    errorText: ""
+    errorText: "",
+    selectedDate: new Date("2014-05-13T21:11:54")
   };
 
   // Proceed to the next step
@@ -156,8 +156,7 @@ class CustomForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const answer = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      name: this.state.name,
       age: Number(this.state.age),
       sex: this.state.sex,
       email: this.state.email,
@@ -183,15 +182,15 @@ class CustomForm extends Component {
     const { step, errors } = this.state;
     const {
       email,
-      firstName,
-      lastName,
+      name,
       age,
       sex,
       trip1,
       trip2,
       trip3,
       entourage,
-      errorText
+      errorText,
+      selectedDate
     } = this.state;
     /*
      * On stock les states dans values pour ensuite passer values dans les autres components
@@ -199,15 +198,15 @@ class CustomForm extends Component {
     const values = {
       step,
       email,
-      firstName,
-      lastName,
+      name,
       age,
       sex,
       trip1,
       trip2,
       trip3,
       entourage,
-      errorText
+      errorText,
+      selectedDate
     };
 
     switch (step) {

@@ -68,11 +68,11 @@ function AccrocheText(props) {
           fontSize: "20px"
         }}>
         <span className="podrozInline">PODROZ</span> est la première plateforme
-        gratuite vous proposant des séjours qui vous correspondent
+        gratuite vous proposant des séjours qui vous correspondent !
         <br />
         <br />
         Du choix de la destination, jusqu'au logement en passant par vos
-        activités quotidiennes... Nous vous accompagnons pour tracer le séjour
+        activités quotidiennes, nous vous accompagnons pour tracer le séjour
         idéal !
       </p>
       <p
@@ -81,7 +81,7 @@ function AccrocheText(props) {
           paddingRight: "30px",
           fontSize: "20px"
         }}>
-        Dites-nous qui vous êtes et nous vous dirons où aller :
+        Dites-nous qui vous êtes et nous vous dirons où aller ...
       </p>
       <ColorButton
         variant="contained"

@@ -29,8 +29,7 @@ router.post("/add", (req, res) => {
     return res.status(400).json(errors);
   }
   const newAnswer = new Answers({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    name: req.body.name,
     email: req.body.email,
     age: req.body.age,
     sex: req.body.sex,

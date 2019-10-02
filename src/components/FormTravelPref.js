@@ -16,15 +16,24 @@ import { emphasize } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 /**
  * Création du Mui Theme
  */
+const handleDateChange = date => e => {
+  this.setState({ [date]: e.target.value });
+};
 const theme = createMuiTheme({
   overrides: {
     MuiLinearProgress: {
       barColorPrimary: {
-        background: "linear-gradient(to right, #FFC371, #FF5F6D)"
+        // background: "linear-gradient(to right, #FFC371, #FF5F6D)"
+        backgroundColor: "rgb(242,76,2)"
       }
     }
   },
@@ -196,7 +205,7 @@ export class FormTravelPref extends Component {
             <Grid item xs={5} container justify="flex-end" alignItems="center">
               <Icon
                 style={{
-                  color: "pink",
+                  color: "rgb(252,76,2)",
                   fontSize: "75px",
                   transform: "rotate(-20deg)"
                 }}>
@@ -215,13 +224,13 @@ export class FormTravelPref extends Component {
 
           <form>
             <Grid container spacing={1}>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <FormControl className={classes.formControl}>
                   <TextField
-                    id="firstName"
-                    label="Prénom"
-                    onChange={handleChange("firstName")}
-                    defaultValue={values.firstName}
+                    id="name"
+                    label="Nom complet"
+                    onChange={handleChange("name")}
+                    defaultValue={values.name}
                     className={classes.textField}
                     variant="outlined"
                     InputProps={{
@@ -236,7 +245,7 @@ export class FormTravelPref extends Component {
                   />
                 </FormControl>
               </Grid>
-              <Grid item xs={6}>
+              {/* <Grid item xs={6}>
                 <FormControl className={classes.formControl}>
                   <TextField
                     id="lastName"
@@ -246,6 +255,7 @@ export class FormTravelPref extends Component {
                     className={classes.textField}
                     variant="outlined"
                     InputProps={{
+                      style: { minWidth: "15vw" },
                       startAdornment: (
                         <InputAdornment position="start">
                           <Icon style={{ color: "rgb(220,220,220)" }}>
@@ -256,8 +266,8 @@ export class FormTravelPref extends Component {
                     }}
                   />
                 </FormControl>
-              </Grid>
-              <Grid item xs={6}>
+              </Grid> */}
+              <Grid item xs={8}>
                 <FormControl className={classes.formControl}>
                   <TextField
                     id="age"
@@ -274,7 +284,7 @@ export class FormTravelPref extends Component {
                   </FormHelperText>
                 </FormControl>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <FormControl className={classes.formControl}>
                   <TextField
                     id="sexe"
