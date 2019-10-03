@@ -3,7 +3,7 @@ import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
+// import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
@@ -16,18 +16,10 @@ import { emphasize } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
 
 /**
  * Création du Mui Theme
  */
-const handleDateChange = date => e => {
-  this.setState({ [date]: e.target.value });
-};
 const theme = createMuiTheme({
   overrides: {
     MuiLinearProgress: {
@@ -78,17 +70,12 @@ const styles = {
   textField: {
     marginLeft: 24,
     marginRight: 24,
-    width: "17vw"
-  },
-  textFieldAge: {
-    marginLeft: 24,
-    marginRight: 24,
-    width: "17vw"
-  },
-  textFieldEmail: {
-    marginLeft: 24,
-    marginRight: 24,
     width: "30vw"
+  },
+  textFieldShort: {
+    marginLeft: 24,
+    marginRight: 24,
+    width: "20vw"
   },
   root: {
     flexGrow: 1,
@@ -208,7 +195,8 @@ export class FormTravelPref extends Component {
                   color: "rgb(252,76,2)",
                   fontSize: "75px",
                   transform: "rotate(-20deg)"
-                }}>
+                }}
+              >
                 face
               </Icon>
             </Grid>
@@ -217,13 +205,14 @@ export class FormTravelPref extends Component {
               xs={7}
               container
               justify="flex-start"
-              alignItems="center">
+              alignItems="center"
+            >
               <h1 className="textTitleCard">Qui êtes vous ?</h1>
             </Grid>
           </Grid>
 
           <form>
-            <Grid container spacing={1}>
+            <Grid container spacing={1} justify="center" alignItems="center">
               <Grid item xs={8}>
                 <FormControl className={classes.formControl}>
                   <TextField
@@ -274,14 +263,15 @@ export class FormTravelPref extends Component {
                     label="Age"
                     onChange={handleChange("age")}
                     defaultValue={values.age}
-                    className={classes.textFieldAge}
+                    className={classes.textFieldShort}
                     variant="outlined"
                   />
-                  <FormHelperText
+                  {/* <FormHelperText
                     style={{ color: "red" }}
-                    id="component-error-text">
+                    id="component-error-text"
+                  >
                     {values.errorText}
-                  </FormHelperText>
+                  </FormHelperText> */}
                 </FormControl>
               </Grid>
               <Grid item xs={8}>
@@ -290,10 +280,11 @@ export class FormTravelPref extends Component {
                     id="sexe"
                     select
                     label="Sexe"
-                    className={classes.textField}
+                    className={classes.textFieldShort}
                     value={values.sex}
                     onChange={handleChange("sex")}
-                    variant="outlined">
+                    variant="outlined"
+                  >
                     {sex_options.map(option => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
@@ -302,7 +293,7 @@ export class FormTravelPref extends Component {
                   </TextField>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} container justify="center" alignItems="center">
+              <Grid item xs={8}>
                 <FormControl className={classes.formControl}>
                   <TextField
                     id="email"
@@ -310,7 +301,7 @@ export class FormTravelPref extends Component {
                     onChange={handleChange("email")}
                     defaultValue={values.email}
                     type="email"
-                    className={classes.textFieldEmail}
+                    className={classes.textField}
                     variant="outlined"
                     InputProps={{
                       startAdornment: (
@@ -324,33 +315,34 @@ export class FormTravelPref extends Component {
                   />
                 </FormControl>
               </Grid>
-              <MobileStepper
-                variant="progress"
-                steps={3}
-                position="static"
-                activeStep={values.step}
-                className={classes.stepper}
-                nextButton={
-                  <Button size="small" onClick={handleSubmit}>
-                    Envoyer
-                    {theme.direction === "rtl" ? (
-                      <KeyboardArrowLeft />
-                    ) : (
-                      <KeyboardArrowRight />
-                    )}
-                  </Button>
-                }
-                backButton={
-                  <Button size="small" onClick={this.back}>
-                    {theme.direction === "rtl" ? (
-                      <KeyboardArrowRight />
-                    ) : (
-                      <KeyboardArrowLeft />
-                    )}
-                  </Button>
-                }
-              />
             </Grid>
+
+            <MobileStepper
+              variant="progress"
+              steps={3}
+              position="static"
+              activeStep={values.step}
+              className={classes.stepper}
+              nextButton={
+                <Button size="small" onClick={handleSubmit}>
+                  Envoyer
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowLeft />
+                  ) : (
+                    <KeyboardArrowRight />
+                  )}
+                </Button>
+              }
+              backButton={
+                <Button size="small" onClick={this.back}>
+                  {theme.direction === "rtl" ? (
+                    <KeyboardArrowRight />
+                  ) : (
+                    <KeyboardArrowLeft />
+                  )}
+                </Button>
+              }
+            />
           </form>
         </React.Fragment>
       </MuiThemeProvider>
