@@ -4,6 +4,7 @@ import FormTravelPref from "./FormTravelPref";
 import Success from "./Success";
 import AccrocheText from "./AccrocheText";
 import axios from "axios";
+import ReactGA from "react-ga";
 
 // const keys = require("../keys");
 
@@ -155,6 +156,10 @@ class CustomForm extends Component {
    */
   handleSubmit = e => {
     e.preventDefault();
+    ReactGA.event({
+      category: "Sign Up",
+      action: "Bouton Envoyer cliqué"
+    });
     const answer = {
       name: this.state.name,
       age: Number(this.state.age),

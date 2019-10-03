@@ -9,6 +9,18 @@ import CardContent from "@material-ui/core/CardContent";
 
 import CustomForm from "./components/CustomForm";
 
+import ReactGA from "react-ga";
+// import auth from "./auth.ts"; // Sample authentication provider
+
+const trackingId = "UA-149391077-1"; // Replace with your Google Analytics tracking ID
+ReactGA.initialize(trackingId);
+ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.set({
+  // userId: auth.currentUserId()
+  // any data that is relevant to the user session
+  // that you would like to track with google analytics
+});
+
 /**
  * Création des Styles cSS pour le component
  */
@@ -50,7 +62,8 @@ function App(props) {
         <Grid item xs={12}>
           <p
             className="textSubTitle, hit-the-floor"
-            style={{ textAlign: "center" }}>
+            style={{ textAlign: "center" }}
+          >
             VOS VACANCES TAILLÉES SUR MESURE
           </p>
         </Grid>
@@ -59,7 +72,8 @@ function App(props) {
             style={{
               textAlign: "center"
             }}
-            className={classes.card}>
+            className={classes.card}
+          >
             <CardContent style={{ position: "relative" }}>
               <CustomForm />
             </CardContent>

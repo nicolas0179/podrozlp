@@ -24,6 +24,8 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
+import ReactGA from "react-ga";
+
 // A custom theme for this app
 const theme = createMuiTheme({
   overrides: {
@@ -165,7 +167,8 @@ function NoOptionsMessage(props) {
     <Typography
       color="textSecondary"
       className={props.selectProps.classes.noOptionsMessage}
-      {...props.innerProps}>
+      {...props.innerProps}
+    >
       {props.children}
     </Typography>
   );
@@ -251,7 +254,8 @@ function Option(props) {
       style={{
         fontWeight: props.isSelected ? 500 : 400
       }}
-      {...props.innerProps}>
+      {...props.innerProps}
+    >
       {props.children}
     </MenuItem>
   );
@@ -294,7 +298,8 @@ function Placeholder(props) {
       color="textSecondary"
       style={{ fontSize: "12px", color: "rgb(220,220,220)" }}
       className={selectProps.classes.placeholder}
-      {...innerProps}>
+      {...innerProps}
+    >
       {children}
     </Typography>
   );
@@ -358,7 +363,8 @@ function Menu(props) {
     <Paper
       square
       className={props.selectProps.classes.paper}
-      {...props.innerProps}>
+      {...props.innerProps}
+    >
       {props.children}
     </Paper>
   );
@@ -434,6 +440,10 @@ class FormDestination extends Component {
      */
     const continu = e => {
       e.preventDefault();
+      ReactGA.event({
+        category: "Continue",
+        action: "Go to last step"
+      });
       this.props.nextStep();
     };
 
@@ -462,13 +472,15 @@ class FormDestination extends Component {
                 xs={2}
                 container
                 justify="flex-end"
-                alignItems="center">
+                alignItems="center"
+              >
                 <Icon
                   style={{
                     color: "rgb(242,76,2)",
                     fontSize: "75px",
                     transform: "rotate(45deg)"
-                  }}>
+                  }}
+                >
                   airplanemode_active
                 </Icon>
               </Grid>
@@ -477,7 +489,8 @@ class FormDestination extends Component {
                 xs={10}
                 container
                 justify="flex-start"
-                alignItems="center">
+                alignItems="center"
+              >
                 <h1 className="textTitleCard">
                   Dites-nous en plus sur vos destinations préférées
                 </h1>
@@ -495,14 +508,16 @@ class FormDestination extends Component {
                 xs={3}
                 container
                 justify="center"
-                alignItems="flex-start">
+                alignItems="flex-start"
+              >
                 <TextField
                   fullWidth
                   id="stayLength"
                   select
                   label="Durée du séjour"
                   value={values.trip1.stayLength ? values.trip1.stayLength : ""}
-                  onChange={handleStayLengthChange("trip1")}>
+                  onChange={handleStayLengthChange("trip1")}
+                >
                   {optionsStayLength.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
@@ -578,7 +593,8 @@ class FormDestination extends Component {
                   label="Durée du séjour"
                   className={classes.textField}
                   value={values.trip2.stayLength ? values.trip2.stayLength : ""}
-                  onChange={handleStayLengthChange("trip2")}>
+                  onChange={handleStayLengthChange("trip2")}
+                >
                   {optionsStayLength.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
@@ -653,7 +669,8 @@ class FormDestination extends Component {
                   label="Durée du séjour"
                   className={classes.textField}
                   value={values.trip3.stayLength ? values.trip3.stayLength : ""}
-                  onChange={handleStayLengthChange("trip3")}>
+                  onChange={handleStayLengthChange("trip3")}
+                >
                   {optionsStayLength.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
