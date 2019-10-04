@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3105;
 
 app.use(cors());
 app.use(express.json());

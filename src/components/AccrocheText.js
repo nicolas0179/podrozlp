@@ -109,7 +109,7 @@ function AccrocheText(props) {
             textAlign: "right"
           }}>
           {" "}
-          Des questions ? contact@waterbot.fr
+          Des questions ? contact@podroz.fr
         </p>
       </div>
     </div>

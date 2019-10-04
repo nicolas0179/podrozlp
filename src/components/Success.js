@@ -46,9 +46,11 @@ export class FormTravelPref extends Component {
           <p style={{ fontSize: "16px" }}>
             Toutes ces informations nous permettent de faire évoluer Podroz.
             Chacun de vos voyages à une réelle importance pour nous !
-            <br /> Vous trouverez davantages d'informations sur notre projet ici
-            : WWW.YOUTEUBETUB.FR, et si vous souhaitez nous contacter ce sera
-            ici : contact@waterbot.fr <br />
+            <br /> Vous trouverez davantages d'informations sur notre projet en
+            cliquant sur ce bouton :
+            <br />
+            <br /> et si vous souhaitez nous contacter ce sera ici :
+            contact@podroz.fr <br />
             N'hésitez pas à nous partager à tous vos amis amateurs de voyages
           </p>
           <h1 className="textTitleCard" style={{ fontSize: "30px" }}>
