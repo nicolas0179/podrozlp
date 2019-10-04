@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ReactGA from "react-ga";
+import { Grid } from "@material-ui/core";
+import Icon from "@material-ui/core/Icon";
 
 // #####
 /**
@@ -65,6 +67,10 @@ function AccrocheText(props) {
    */
   return (
     <div style={{ textAlign: "center" }}>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
       <p
         style={{
           paddingLeft: "30px",
@@ -79,7 +85,60 @@ function AccrocheText(props) {
         Du choix de la destination, jusqu'au logement en passant par vos
         activités quotidiennes, nous vous accompagnons pour tracer le séjour
         idéal !
+        <br />
+        <br />
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <Icon
+              style={{
+                color: "rgb(246,103,103)",
+                fontSize: "50px"
+              }}>
+              sentiment_satisfied_alt
+            </Icon>
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px"
+              }}>
+              Connecte-toi !
+            </p>
+          </Grid>
+          <Grid item xs>
+            <Icon
+              style={{
+                color: "rgb(246,103,103)",
+                fontSize: "50px"
+              }}>
+              build
+            </Icon>
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px"
+              }}>
+              Donne-nous tes préférences !
+            </p>
+          </Grid>
+          <Grid item xs>
+            <Icon
+              style={{
+                color: "rgb(246,103,103)",
+                fontSize: "50px"
+              }}>
+              flight_takeoff
+            </Icon>
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px"
+              }}>
+              Et décolle pour ta destination !
+            </p>
+          </Grid>
+        </Grid>
       </p>
+
       <p
         style={{
           paddingLeft: "30px",
