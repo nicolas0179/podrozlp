@@ -71,8 +71,7 @@ function AccrocheText(props) {
           paddingRight: "30px",
           paddingTop: "30px",
           fontSize: "20px"
-        }}
-      >
+        }}>
         <span className="podrozInline">PODROZ</span> est la première plateforme
         gratuite vous proposant des séjours qui vous correspondent !
         <br />
@@ -86,8 +85,7 @@ function AccrocheText(props) {
           paddingLeft: "30px",
           paddingRight: "30px",
           fontSize: "20px"
-        }}
-      >
+        }}>
         Dites-nous qui vous êtes et nous vous dirons où aller ...
       </p>
       <ColorButton
@@ -95,8 +93,7 @@ function AccrocheText(props) {
         color="primary"
         className={classes.margin}
         onClick={continu}
-        style={{ marginBottom: "50px" }}
-      >
+        style={{ marginBottom: "50px" }}>
         Tenter l'aventure
       </ColorButton>
       <div
@@ -105,14 +102,12 @@ function AccrocheText(props) {
           bottom: "0",
           right: "0",
           marginRight: "10px"
-        }}
-      >
+        }}>
         <p
           style={{
             fontSize: "15px",
             textAlign: "right"
-          }}
-        >
+          }}>
           {" "}
           Des questions ? contact@waterbot.fr
         </p>
