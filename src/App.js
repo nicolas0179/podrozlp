@@ -55,15 +55,16 @@ function App(props) {
     <div className="App">
       <Grid container justify="center" style={{ opacity: "0.95" }}>
         <Grid item xs={12}>
-          <h1 className="textTitle" style={{ textAlign: "center" }}>
+          <h1
+            className="textTitle"
+            style={{ textAlign: "center", marginBottom: "-50px" }}>
             PODROZ
           </h1>
         </Grid>
         <Grid item xs={12}>
           <p
             className="textSubTitle, hit-the-floor"
-            style={{ textAlign: "center" }}
-          >
+            style={{ textAlign: "center" }}>
             VOS VACANCES TAILLÉES SUR MESURE
           </p>
         </Grid>
@@ -72,8 +73,7 @@ function App(props) {
             style={{
               textAlign: "center"
             }}
-            className={classes.card}
-          >
+            className={classes.card}>
             <CardContent style={{ position: "relative" }}>
               <CustomForm />
             </CardContent>

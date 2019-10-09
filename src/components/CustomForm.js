@@ -10,7 +10,7 @@ import ReactGA from "react-ga";
 
 // axios.defaults.baseURL = keys.baseUrl;
 
-axios.defaults.baseURL = "http://51.75.203.108:3105";
+axios.defaults.baseURL = "http://api.podroz.fr";
 
 class CustomForm extends Component {
   /**

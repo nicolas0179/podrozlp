@@ -412,7 +412,7 @@ class FormDestination extends Component {
    */
   componentDidMount() {
     axios
-      .get("http://51.75.203.108:3105/pays")
+      .get("http://api.podroz.fr/pays")
       .then(response => {
         this.setState({ countries: response.data });
       })
