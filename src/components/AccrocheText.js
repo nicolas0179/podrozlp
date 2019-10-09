@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import ReactGA from "react-ga";
 import { Grid } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
+import Obfuscate from "react-obfuscate";
 
 // #####
 /**
@@ -77,7 +78,8 @@ function AccrocheText(props) {
           paddingRight: "30px",
           paddingTop: "30px",
           fontSize: "20px"
-        }}>
+        }}
+      >
         <span className="podrozInline">PODROZ</span> est la première plateforme
         gratuite vous proposant des séjours qui vous correspondent !
         <br />
@@ -93,14 +95,16 @@ function AccrocheText(props) {
               style={{
                 color: "rgb(246,103,103)",
                 fontSize: "50px"
-              }}>
+              }}
+            >
               sentiment_satisfied_alt
             </Icon>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
-              }}>
+              }}
+            >
               Connecte-toi !
             </p>
           </Grid>
@@ -109,14 +113,16 @@ function AccrocheText(props) {
               style={{
                 color: "rgb(246,103,103)",
                 fontSize: "50px"
-              }}>
+              }}
+            >
               build
             </Icon>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
-              }}>
+              }}
+            >
               Donne-nous tes préférences !
             </p>
           </Grid>
@@ -125,14 +131,16 @@ function AccrocheText(props) {
               style={{
                 color: "rgb(246,103,103)",
                 fontSize: "50px"
-              }}>
+              }}
+            >
               flight_takeoff
             </Icon>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
-              }}>
+              }}
+            >
               Et décolle pour ta destination !
             </p>
           </Grid>
@@ -144,7 +152,8 @@ function AccrocheText(props) {
           paddingLeft: "30px",
           paddingRight: "30px",
           fontSize: "20px"
-        }}>
+        }}
+      >
         Dites-nous qui vous êtes et nous vous dirons où aller ...
       </p>
       <ColorButton
@@ -152,7 +161,8 @@ function AccrocheText(props) {
         color="primary"
         className={classes.margin}
         onClick={continu}
-        style={{ marginBottom: "50px" }}>
+        style={{ marginBottom: "50px" }}
+      >
         Tenter l'aventure
       </ColorButton>
       <div
@@ -161,14 +171,22 @@ function AccrocheText(props) {
           bottom: "0",
           right: "0",
           marginRight: "10px"
-        }}>
+        }}
+      >
         <p
           style={{
             fontSize: "15px",
             textAlign: "right"
-          }}>
+          }}
+        >
           {" "}
-          Des questions ? contact@podroz.fr
+          Des questions ?{" "}
+          <Obfuscate
+            email="contact@podroz.fr"
+            // headers={{
+            //   subject: "react-obfuscate",
+            // }}
+          />
         </p>
       </div>
     </div>

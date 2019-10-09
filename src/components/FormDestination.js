@@ -123,10 +123,12 @@ const styles = theme => ({
 });
 
 const optionsActivities = [
-  { label: "Chill" },
+  { label: "Détente" },
   { label: "Festivals" },
   { label: "Gastronomie" },
-  { label: "Monuments historiques" },
+  // { label: "Monuments historiques" },
+  { label: "Culture" },
+
   { label: "Musées" },
   { label: "Nature" },
   { label: "Plage" },
@@ -492,15 +494,15 @@ class FormDestination extends Component {
                 alignItems="center"
               >
                 <h1 className="textTitleCard">
-                  Dites-nous en plus sur vos destinations préférées
+                  Dites-nous en plus sur les destinations qui vous ont marquées
                 </h1>
               </Grid>
             </Grid>
             <p style={{ fontSize: "14px" }}>
               Vous pouvez renseigner{" "}
-              <b style={{ fontSize: "15px" }}>jusqu'à 3 destinations </b>
-              favorites, et pour chacune d'entres elles, préciser quelle(s)
-              activité(s) vous ont motivées à partir{" "}
+              <b style={{ fontSize: "15px" }}>1, 2 ou 3 destinations</b>, et
+              pour chacune d'entres elles, précisez quelle(s) activité(s) vous
+              ont motivées à partir{" "}
             </p>
             <Grid spacing={1} container direction="row" justify="center">
               <Grid
