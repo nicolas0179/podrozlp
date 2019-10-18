@@ -70,8 +70,8 @@ export class FormTravelPref extends Component {
             La version 2 de Podroz arrive bientôt et vous en serez les premiers
             informés.
             <br />
-            En attendant, n'hésitez pas à nous partager à tous vos amis amateurs
-            de voyages.
+            En attendant, n'hésitez pas à partager le concept Podroz à tous vos
+            amis amateurs de voyages.
           </p>
           <h1 className="textTitleCard" style={{ fontSize: "30px" }}>
             {" "}

@@ -89,6 +89,24 @@ function AccrocheText(props) {
         idéal !
         <br />
         <br />
+        <p
+          style={{
+            paddingLeft: "30px",
+            paddingRight: "30px",
+            fontSize: "20px"
+          }}
+        >
+          Dites-nous qui vous êtes et nous vous dirons où aller ...
+        </p>
+        <ColorButton
+          variant="contained"
+          color="primary"
+          className={classes.margin}
+          onClick={continu}
+          style={{ marginBottom: "50px" }}
+        >
+          Tenter l'aventure
+        </ColorButton>
         <Grid container spacing={3}>
           <Grid item xs>
             <Icon
@@ -105,7 +123,7 @@ function AccrocheText(props) {
                 fontSize: "18px"
               }}
             >
-              Connecte-toi !
+              Renseignez vos préférences et votre historique de voyages
             </p>
           </Grid>
           <Grid item xs>
@@ -123,7 +141,32 @@ function AccrocheText(props) {
                 fontSize: "18px"
               }}
             >
-              Donne-nous tes préférences !
+              Recevez une proposition personnalisée.
+              <br />
+              En fonction de vos préférences, notre algorithme va sélectionner
+              des destinations qui peuvent vous intéresser.
+            </p>
+          </Grid>
+          <Grid item xs>
+            <Icon
+              style={{
+                color: "rgb(246,103,103)",
+                fontSize: "50px"
+              }}
+            >
+              build
+            </Icon>
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px"
+              }}
+            >
+              Composez votre séjour.
+              <br />
+              Parcourez les activités sélectionnées pour vous et sauvegardez
+              celles qui vous intéressent. Composez ainsi pas à pas votre
+              séjour.
             </p>
           </Grid>
           <Grid item xs>
@@ -141,30 +184,13 @@ function AccrocheText(props) {
                 fontSize: "18px"
               }}
             >
-              Et décolle pour ta destination !
+              Faites vos réservations, préparez votre valise et décollez pour
+              votre destination !
             </p>
           </Grid>
         </Grid>
       </p>
 
-      <p
-        style={{
-          paddingLeft: "30px",
-          paddingRight: "30px",
-          fontSize: "20px"
-        }}
-      >
-        Dites-nous qui vous êtes et nous vous dirons où aller ...
-      </p>
-      <ColorButton
-        variant="contained"
-        color="primary"
-        className={classes.margin}
-        onClick={continu}
-        style={{ marginBottom: "50px" }}
-      >
-        Tenter l'aventure
-      </ColorButton>
       <div
         style={{
           position: "absolute",

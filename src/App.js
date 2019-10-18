@@ -57,23 +57,27 @@ function App(props) {
         <Grid item xs={12}>
           <h1
             className="textTitle"
-            style={{ textAlign: "center", marginBottom: "-50px" }}>
+            style={{ textAlign: "center", marginBottom: "-50px" }}
+          >
             PODROZ
           </h1>
         </Grid>
         <Grid item xs={12}>
           <p
             className="textSubTitle, hit-the-floor"
-            style={{ textAlign: "center" }}>
+            style={{ textAlign: "center" }}
+          >
             VOS VACANCES TAILLÉES SUR MESURE
           </p>
         </Grid>
         <Grid item>
           <Card
             style={{
-              textAlign: "center"
+              textAlign: "center",
+              marginTop: "40px"
             }}
-            className={classes.card}>
+            className={classes.card}
+          >
             <CardContent style={{ position: "relative" }}>
               <CustomForm />
             </CardContent>
