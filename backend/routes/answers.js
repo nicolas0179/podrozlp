@@ -7,11 +7,11 @@ const validateAnswer = require("../../validation/answers");
 /**
  * Retrieve all the form answers
  */
-router.route("/").get((req, res) => {
-  Answers.find() // method to get a list for all the users from the db
-    .then(answers => res.json(answers)) // return on json format
-    .catch(err => res.status(400).json("Error on GET all answers: " + err));
-});
+// router.route("/").get((req, res) => {
+//   Answers.find() // method to get a list for all the users from the db
+//     .then(answers => res.json(answers)) // return on json format
+//     .catch(err => res.status(400).json("Error on GET all answers: " + err));
+// });
 
 ///////////////////
 // Add endpoint //
