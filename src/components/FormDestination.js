@@ -123,17 +123,14 @@ const styles = theme => ({
 });
 
 const optionsActivities = [
-  { label: "Détente" },
-  { label: "Festivals" },
+  { label: "Bien-être et détente" },
+  { label: "Concerts, spectacles et festivals" },
+  { label: "Culture et musées" },
   { label: "Gastronomie" },
-  // { label: "Monuments historiques" },
-  { label: "Culture" },
-
-  { label: "Musées" },
-  { label: "Nature" },
+  { label: "Nature et activités de plein air" },
   { label: "Plage" },
   { label: "Shopping" },
-  { label: "Soirées" }
+  { label: "Vie nocturne" }
 ].map(option => ({
   value: option.label,
   label: option.label
@@ -477,6 +474,7 @@ class FormDestination extends Component {
                 alignItems="center"
               >
                 <Icon
+                  row
                   style={{
                     color: "rgb(242,76,2)",
                     fontSize: "75px",

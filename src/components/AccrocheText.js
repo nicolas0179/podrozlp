@@ -6,6 +6,7 @@ import ReactGA from "react-ga";
 import { Grid } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 import Obfuscate from "react-obfuscate";
+import Divider from "@material-ui/core/Divider";
 
 // #####
 /**
@@ -80,13 +81,14 @@ function AccrocheText(props) {
           fontSize: "20px"
         }}
       >
+        {/* <a href={"#concept"}>Google</a> */}
         <span className="podrozInline">PODROZ</span> est la première plateforme
         gratuite vous proposant des séjours qui vous correspondent !
         <br />
         <br />
-        Du choix de la destination, jusqu'au logement en passant par vos
-        activités quotidiennes, nous vous accompagnons pour tracer le séjour
-        idéal !
+        Des vacances mais pas encore de destination ? En plus de vous aider à
+        planifier vos séjours, Podroz vous propose des destinations et des
+        activités qui vous plairont !
         <br />
         <br />
         <p
@@ -107,7 +109,14 @@ function AccrocheText(props) {
         >
           Tenter l'aventure
         </ColorButton>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} direction="column">
+          <Divider variant="middle" />
+
+          {/* Ancre pour aller direct à la partie Concept */}
+          <a name="concept"></a>
+
+          <h1>Comment ça marche ?</h1>
+
           <Grid item xs>
             <Icon
               style={{
@@ -115,15 +124,27 @@ function AccrocheText(props) {
                 fontSize: "50px"
               }}
             >
-              sentiment_satisfied_alt
+              favorite
             </Icon>
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px",
+                fontFamily: "Montserrat"
+              }}
+            >
+              Renseignez vos préférences et votre historique de voyages
+            </p>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
               }}
             >
-              Renseignez vos préférences et votre historique de voyages
+              <br />
+              Le meilleur burger que vous avez goûté, le plus beau coucher de
+              soleil auquel vous avez assisté, racontez-nous vos plus belles
+              expériences de voyages, celles qui vous donnent envie de repartir.
             </p>
           </Grid>
           <Grid item xs>
@@ -133,15 +154,24 @@ function AccrocheText(props) {
                 fontSize: "50px"
               }}
             >
-              build
+              receipt
             </Icon>
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px",
+                fontFamily: "Montserrat"
+              }}
+            >
+              Recevez une proposition personnalisée
+            </p>
+
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
               }}
             >
-              Recevez une proposition personnalisée.
               <br />
               En fonction de vos préférences, notre algorithme va sélectionner
               des destinations qui peuvent vous intéresser.
@@ -154,15 +184,24 @@ function AccrocheText(props) {
                 fontSize: "50px"
               }}
             >
-              build
+              explore
             </Icon>
+
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px",
+                fontFamily: "Montserrat"
+              }}
+            >
+              Composez votre séjour{" "}
+            </p>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
               }}
             >
-              Composez votre séjour.
               <br />
               Parcourez les activités sélectionnées pour vous et sauvegardez
               celles qui vous intéressent. Composez ainsi pas à pas votre
@@ -178,6 +217,15 @@ function AccrocheText(props) {
             >
               flight_takeoff
             </Icon>
+            <p
+              style={{
+                color: "rgb(95,103,105)",
+                fontSize: "18px",
+                fontFamily: "Montserrat"
+              }}
+            >
+              Explorez, rencontrez, découvrez !{" "}
+            </p>
             <p
               style={{
                 color: "rgb(95,103,105)",

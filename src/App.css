@@ -9,7 +9,7 @@
 .App {
   /* text-align: center; */
   background-image: url("../src/ressources/img/bg-home.jpg");
-
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

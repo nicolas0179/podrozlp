@@ -74,7 +74,8 @@ function App(props) {
           <Card
             style={{
               textAlign: "center",
-              marginTop: "40px"
+              marginTop: "40px",
+              marginBottom: "40px"
             }}
             className={classes.card}
           >
