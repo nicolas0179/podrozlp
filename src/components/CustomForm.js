@@ -17,7 +17,7 @@ class CustomForm extends Component {
    * Déclaration des states
    */
   state = {
-    step: 0,
+    step: 3,
     name: "",
     age: "",
     sex: "",

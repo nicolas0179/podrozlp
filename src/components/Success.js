@@ -45,33 +45,36 @@ export class FormTravelPref extends Component {
         <React.Fragment>
           <h1 className="textTitleCard">
             {" "}
-            Bienvenue au sein de la communauté Podroz, l'aventure ne fait que
-            commencer !
+            Bienvenue au sein de la communauté Podroz, <br /> l'aventure ne fait
+            que commencer !
           </h1>
           <p style={{ fontSize: "16px" }}>
-            Nous vous remercions pour l'intérêt que vous nous portez. Toutes ces
-            informations nous permettent de faire évoluer Podroz afin de
-            répondre au mieux à vos attentes et créer avec vous .
+            Nous vous remercions pour votre participation, Podroz se met sur
+            pied grâce à vous !
+            {/* Toutes ces informations nous permettent de faire évoluer Podroz afin de
+            répondre au mieux à vos attentes et créer avec vous ... */}
+            <br />
             <br />
             Vous allez recevoir prochainement un email vous présentant un
             avant-goût de ce qu'est Podroz.
             <br />
+            <br />
             Vous trouverez davantages d'informations sur notre projet en
             cliquant sur ce bouton :
             <br />
-            et si vous avez des questions c'est par là :&nbsp;
-            <Obfuscate
-              email="contact@podroz.fr"
-              // headers={{
-              //   subject: "react-obfuscate",
-              // }}
-            />
             <br />
             La version 2 de Podroz arrive bientôt et vous en serez les premiers
             informés.
             <br />
+            <br />
             En attendant, n'hésitez pas à partager le concept Podroz à tous vos
             amis amateurs de voyages.
+            <br />
+            <br />
+            Et si vous avez des questions c'est par là :&nbsp;
+            <Obfuscate email="contact@podroz.fr" />
+            <br />
+            <br />
           </p>
           <h1 className="textTitleCard" style={{ fontSize: "30px" }}>
             {" "}
