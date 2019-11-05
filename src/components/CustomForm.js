@@ -10,14 +10,14 @@ import ReactGA from "react-ga";
 
 // axios.defaults.baseURL = keys.baseUrl;
 
-axios.defaults.baseURL = "http://api.podroz.fr";
+axios.defaults.baseURL = "https://api.podroz.fr";
 
 class CustomForm extends Component {
   /**
    * Déclaration des states
    */
   state = {
-    step: 0,
+    step: 3,
     name: "",
     age: "",
     sex: "",

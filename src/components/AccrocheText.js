@@ -79,8 +79,7 @@ function AccrocheText(props) {
           paddingRight: "30px",
           paddingTop: "30px",
           fontSize: "20px"
-        }}
-      >
+        }}>
         {/* <a href={"#concept"}>Google</a> */}
         <span className="podrozInline">PODROZ</span> est la première plateforme
         gratuite vous proposant des séjours qui vous correspondent !
@@ -96,8 +95,7 @@ function AccrocheText(props) {
             paddingLeft: "30px",
             paddingRight: "30px",
             fontSize: "20px"
-          }}
-        >
+          }}>
           Dites-nous qui vous êtes et nous vous dirons où aller ...
         </p>
         <ColorButton
@@ -105,8 +103,7 @@ function AccrocheText(props) {
           color="primary"
           className={classes.margin}
           onClick={continu}
-          style={{ marginBottom: "50px" }}
-        >
+          style={{ marginBottom: "50px" }}>
           Tenter l'aventure
         </ColorButton>
         <Grid container spacing={3} direction="column">
@@ -115,15 +112,20 @@ function AccrocheText(props) {
           {/* Ancre pour aller direct à la partie Concept */}
           <a name="concept"></a>
 
+<<<<<<< HEAD
           <h2>Comment ça marche ?</h2>
+=======
+          <h1 style={{ paddingTop: "20px", paddingBottom: "15px" }}>
+            Comment ça marche ?
+          </h1>
+>>>>>>> d99c99e8ab5c5bf6bfe4e3d74cc4557276892561
 
           <Grid item xs>
             <Icon
               style={{
                 color: "rgb(246,103,103)",
                 fontSize: "50px"
-              }}
-            >
+              }}>
               favorite
             </Icon>
             <p
@@ -131,16 +133,14 @@ function AccrocheText(props) {
                 color: "rgb(95,103,105)",
                 fontSize: "18px",
                 fontFamily: "Montserrat"
-              }}
-            >
+              }}>
               Renseignez vos préférences et votre historique de voyages
             </p>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
-              }}
-            >
+              }}>
               <br />
               Le meilleur burger que vous avez goûté, le plus beau coucher de
               soleil auquel vous avez assisté, racontez-nous vos plus belles
@@ -152,8 +152,7 @@ function AccrocheText(props) {
               style={{
                 color: "rgb(246,103,103)",
                 fontSize: "50px"
-              }}
-            >
+              }}>
               receipt
             </Icon>
             <p
@@ -161,8 +160,7 @@ function AccrocheText(props) {
                 color: "rgb(95,103,105)",
                 fontSize: "18px",
                 fontFamily: "Montserrat"
-              }}
-            >
+              }}>
               Recevez une proposition personnalisée
             </p>
 
@@ -170,8 +168,7 @@ function AccrocheText(props) {
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
-              }}
-            >
+              }}>
               <br />
               En fonction de vos préférences, notre algorithme va sélectionner
               des destinations qui peuvent vous intéresser.
@@ -182,8 +179,7 @@ function AccrocheText(props) {
               style={{
                 color: "rgb(246,103,103)",
                 fontSize: "50px"
-              }}
-            >
+              }}>
               explore
             </Icon>
 
@@ -192,16 +188,14 @@ function AccrocheText(props) {
                 color: "rgb(95,103,105)",
                 fontSize: "18px",
                 fontFamily: "Montserrat"
-              }}
-            >
+              }}>
               Composez votre séjour{" "}
             </p>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
-              }}
-            >
+              }}>
               <br />
               Parcourez les activités sélectionnées pour vous et sauvegardez
               celles qui vous intéressent. Composez ainsi pas à pas votre
@@ -213,8 +207,7 @@ function AccrocheText(props) {
               style={{
                 color: "rgb(246,103,103)",
                 fontSize: "50px"
-              }}
-            >
+              }}>
               flight_takeoff
             </Icon>
             <p
@@ -222,16 +215,14 @@ function AccrocheText(props) {
                 color: "rgb(95,103,105)",
                 fontSize: "18px",
                 fontFamily: "Montserrat"
-              }}
-            >
+              }}>
               Explorez, rencontrez, découvrez !{" "}
             </p>
             <p
               style={{
                 color: "rgb(95,103,105)",
                 fontSize: "18px"
-              }}
-            >
+              }}>
               Faites vos réservations, préparez votre valise et décollez pour
               votre destination !
             </p>
@@ -245,14 +236,12 @@ function AccrocheText(props) {
           bottom: "0",
           right: "0",
           marginRight: "10px"
-        }}
-      >
+        }}>
         <p
           style={{
             fontSize: "15px",
             textAlign: "right"
-          }}
-        >
+          }}>
           {" "}
           Des questions ?{" "}
           <Obfuscate
