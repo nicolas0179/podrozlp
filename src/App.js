@@ -12,7 +12,7 @@ import CustomForm from "./components/CustomForm";
 import ReactGA from "react-ga";
 // import auth from "./auth.ts"; // Sample authentication provider
 
-const trackingId = "UA-149391077-1"; // Replace with your Google Analytics tracking ID
+const trackingId = "UA-151571265-1"; // Replace with your Google Analytics tracking ID
 ReactGA.initialize(trackingId);
 ReactGA.pageview(window.location.pathname + window.location.search);
 ReactGA.set({

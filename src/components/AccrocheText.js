@@ -115,7 +115,7 @@ function AccrocheText(props) {
           {/* Ancre pour aller direct à la partie Concept */}
           <a name="concept"></a>
 
-          <h1>Comment ça marche ?</h1>
+          <h2>Comment ça marche ?</h2>
 
           <Grid item xs>
             <Icon
