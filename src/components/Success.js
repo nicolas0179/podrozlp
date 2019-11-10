@@ -3,6 +3,7 @@ import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { red } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Obfuscate from "react-obfuscate";
+import Button from "@material-ui/core/Button";
 
 // A custom theme for this app
 const theme = createMuiTheme({
@@ -39,6 +40,14 @@ export class FormTravelPref extends Component {
     this.props.prevStep();
   };
 
+  /**
+   * Back home
+   */
+  home = e => {
+    e.preventDefault();
+    this.props.backHome();
+  };
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -54,17 +63,15 @@ export class FormTravelPref extends Component {
             {/* Toutes ces informations nous permettent de faire évoluer Podroz afin de
             répondre au mieux à vos attentes et créer avec vous ... */}
             <br />
-            <br />
             Vous allez recevoir prochainement un email vous présentant un
             avant-goût de ce qu'est Podroz.
             <br />
             <br />
-            Vous trouverez davantages d'informations sur notre projet en
-            cliquant sur ce bouton :
-            <br />
-            <br />
             La version 2 de Podroz arrive bientôt et vous en serez les premiers
             informés.
+            <br />
+            Vous trouverez davantage d'informations sur notre projet sur la page
+            d'accueil.
             <br />
             <br />
             En attendant, n'hésitez pas à partager le concept Podroz à tous vos
@@ -80,6 +87,10 @@ export class FormTravelPref extends Component {
             {" "}
             Encore merci & à bientôt :) <br />
           </h1>
+
+          <Button size="small" onClick={this.home}>
+            Retour à l'accueil
+          </Button>
         </React.Fragment>
       </MuiThemeProvider>
     );

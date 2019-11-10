@@ -17,7 +17,7 @@ class CustomForm extends Component {
    * Déclaration des states
    */
   state = {
-    step: 3,
+    step: 0,
     name: "",
     age: "",
     sex: "",
@@ -44,6 +44,13 @@ class CustomForm extends Component {
     const { step } = this.state;
     this.setState({
       step: step - 1
+    });
+  };
+
+  // Go back to previous step
+  backHome = () => {
+    this.setState({
+      step: 0
     });
   };
 
@@ -246,7 +253,7 @@ class CustomForm extends Component {
         );
 
       case 3:
-        return <Success />;
+        return <Success backHome={this.backHome} />;
       default:
         return <h1>Default</h1>;
     }
