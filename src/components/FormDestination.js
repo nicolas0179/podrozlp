@@ -137,6 +137,7 @@ const optionsActivities = [
 }));
 
 const optionsStayLength = [
+  { label: "" },
   { label: "Quelques jours" },
   { label: "Inférieure à 2 semaines" },
   { label: "De 2 semaines à 1 mois" },
