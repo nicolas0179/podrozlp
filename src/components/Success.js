@@ -4,6 +4,22 @@ import { red } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Obfuscate from "react-obfuscate";
 import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+//CustomButton
+const BackButton = withStyles(theme => ({
+  root: {
+    fontWeight: 800,
+    minWidth: 200,
+    transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+    background:
+      "rgba(252, 143, 41, 1)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+    "&:hover": {
+      transform: "scale(1.05)",
+      boxShadow: "0 6px 10px 4px rgba(255, 105, 135, .3)",
+      backgroundColor: "rgba(251, 186, 48, 1)"
+    }
+  }
+}))(Button);
 
 // A custom theme for this app
 const theme = createMuiTheme({
@@ -88,9 +104,17 @@ export class FormTravelPref extends Component {
             Encore merci & à bientôt :) <br />
           </h1>
 
-          <Button size="small" onClick={this.home}>
+          {/* <Button size="small" onClick={this.home}>
             Retour à l'accueil
-          </Button>
+          </Button> */}
+          <BackButton
+            variant="contained"
+            color="primary"
+            onClick={this.home}
+            style={{ marginBottom: "25px", marginTop: "25px" }}
+          >
+            RETOUR A L'ACCUEIL
+          </BackButton>
         </React.Fragment>
       </MuiThemeProvider>
     );
