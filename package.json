@@ -14,7 +14,7 @@
     "react-dom": "^16.9.0",
     "react-ga": "^2.6.0",
     "react-obfuscate": "^3.6.2",
-    "react-scripts": "3.1.2",
+    "react-scripts": "5.0.1",
     "react-select": "^3.0.5",
     "validator": "^11.1.0"
   },
